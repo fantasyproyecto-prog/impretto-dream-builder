@@ -22,6 +22,8 @@ import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
+import { CinematicScrub } from "@/components/cinematic-scrub";
+import { SmoothScroll } from "@/components/smooth-scroll";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -77,6 +79,7 @@ const PHONE_HREF = "tel:+15550142231";
 function LandingPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SmoothScroll />
       <Header />
       <main>
         <Hero />
@@ -84,6 +87,7 @@ function LandingPage() {
         <WhyUs />
         <Services />
         <Portfolio />
+        <CinematicScrub />
         <Process />
         <Testimonials />
         <FinalCTA />

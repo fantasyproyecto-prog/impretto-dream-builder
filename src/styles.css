@@ -121,15 +121,15 @@
 
 @utility hairline {
   position: relative;
-}
-@utility hairline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: color-mix(in oklab, var(--ink) 12%, transparent);
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: color-mix(in oklab, var(--ink) 12%, transparent);
+  }
 }
 
 @utility btn-brass {
@@ -145,15 +145,15 @@
   border-radius: var(--radius);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
   box-shadow: var(--shadow-soft);
-}
-@utility btn-brass:hover {
-  background: color-mix(in oklab, var(--ink) 85%, var(--brass));
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-elegant);
-}
-@utility btn-brass:focus-visible {
-  outline: 2px solid var(--brass);
-  outline-offset: 3px;
+  &:hover {
+    background: color-mix(in oklab, var(--ink) 85%, var(--brass));
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-elegant);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 3px;
+  }
 }
 
 @utility btn-outline-ink {
@@ -167,10 +167,10 @@
   background: transparent;
   border-radius: var(--radius);
   transition: all 0.25s ease;
-}
-@utility btn-outline-ink:hover {
-  border-color: var(--ink);
-  background: color-mix(in oklab, var(--ink) 4%, transparent);
+  &:hover {
+    border-color: var(--ink);
+    background: color-mix(in oklab, var(--ink) 4%, transparent);
+  }
 }
 
 @utility eyebrow {
@@ -182,12 +182,12 @@
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: color-mix(in oklab, var(--ink) 65%, transparent);
-}
-@utility eyebrow::before {
-  content: "";
-  width: 24px;
-  height: 1px;
-  background: var(--brass);
+  &::before {
+    content: "";
+    width: 24px;
+    height: 1px;
+    background: var(--brass);
+  }
 }
 
 @keyframes fade-up {
@@ -197,3 +197,4 @@
 @utility animate-fade-up {
   animation: fade-up 0.9s ease-out both;
 }
+

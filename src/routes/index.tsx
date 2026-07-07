@@ -437,12 +437,10 @@ function WhyUs() {
           {items.map((it) => (
             <article
               key={it.title}
-              className="group relative rounded-2xl border border-border bg-card p-8 transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)]"
+              className="group relative rounded-2xl bg-card p-10 shadow-sm transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)]"
             >
-              <div className="grid h-12 w-12 place-items-center rounded-lg bg-primary/5 text-accent">
-                <it.icon className="h-6 w-6" aria-hidden />
-              </div>
-              <h3 className="mt-6 font-display text-2xl">{it.title}</h3>
+              <it.icon className="h-6 w-6 text-accent" strokeWidth={1.25} aria-hidden />
+              <h3 className="mt-8 font-display text-2xl">{it.title}</h3>
               <p className="mt-3 text-muted-foreground leading-relaxed">{it.body}</p>
               <div className="absolute inset-x-8 bottom-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </article>
@@ -493,16 +491,16 @@ function Services() {
           {items.map((s, i) => (
             <article
               key={s.title}
-              className="group relative rounded-2xl bg-card border border-border p-8 overflow-hidden"
+              className="group relative rounded-2xl bg-card p-10 overflow-hidden shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow-elegant)]"
             >
-              <span className="absolute top-6 right-6 font-display text-sm text-muted-foreground">
+              <span className="absolute top-8 right-8 font-display text-sm tracking-tight text-accent">
                 0{i + 1}
               </span>
               <h3 className="font-display text-2xl md:text-3xl max-w-sm">{s.title}</h3>
               <p className="mt-4 text-muted-foreground leading-relaxed max-w-md">{s.body}</p>
-              <div className="mt-8 flex items-center gap-2 text-sm text-foreground group-hover:text-accent transition-colors">
+              <div className="mt-8 flex items-center gap-2 text-sm text-accent">
                 <span>Explore this service</span>
-                <span aria-hidden>→</span>
+                <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
               </div>
             </article>
           ))}
@@ -604,7 +602,7 @@ function BeforeAfter() {
   return (
     <div
       ref={ref}
-      className="mt-12 relative aspect-[16/10] w-full overflow-hidden rounded-2xl select-none border border-border shadow-[var(--shadow-soft)]"
+      className="mt-14 relative aspect-[16/10] w-full overflow-hidden rounded-2xl select-none shadow-[var(--shadow-elegant)]"
       aria-label="Before and after remodel comparison. Use slider to reveal."
     >
       <img
@@ -753,7 +751,7 @@ function Testimonials() {
           {reviews.map((r) => (
             <figure
               key={r.name}
-              className="rounded-2xl border border-border bg-card p-8 flex flex-col"
+              className="rounded-2xl bg-card p-10 flex flex-col shadow-sm"
             >
               <div className="flex gap-1 text-accent" aria-label="5 out of 5 stars">
                 {Array.from({ length: 5 }).map((_, i) => (

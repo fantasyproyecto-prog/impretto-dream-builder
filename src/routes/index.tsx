@@ -24,6 +24,8 @@ import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
 import { CinematicScrub } from "@/components/cinematic-scrub";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { MobileCtaBar } from "@/components/mobile-cta-bar";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -93,9 +95,11 @@ function LandingPage() {
         <FinalCTA />
       </main>
       <Footer />
+      <MobileCtaBar />
     </div>
   );
 }
+
 
 /* ---------------- Header ---------------- */
 
@@ -125,8 +129,14 @@ function Header() {
           ? "bg-background/85 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       }`}
+      style={{
+        paddingTop: "env(safe-area-inset-top)",
+        paddingLeft: "env(safe-area-inset-left)",
+        paddingRight: "env(safe-area-inset-right)",
+      }}
     >
       <div className="container-lux flex items-center justify-between py-4 md:py-5">
+
         <a href="#top" className="flex items-center gap-2 group" aria-label="Impretto Home home">
           <span className="grid h-9 w-9 place-items-center rounded-sm bg-primary text-primary-foreground font-display text-lg">
             i
@@ -571,6 +581,7 @@ function BeforeAfter() {
   const [pos, setPos] = useState(50);
   const ref = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
+  const activePointer = useRef<number | null>(null);
 
   const move = (clientX: number) => {
     const el = ref.current;
@@ -580,29 +591,37 @@ function BeforeAfter() {
     setPos(Math.max(0, Math.min(100, p)));
   };
 
-  useEffect(() => {
-    const onMove = (e: MouseEvent | TouchEvent) => {
-      if (!dragging.current) return;
-      const x = "touches" in e ? e.touches[0].clientX : e.clientX;
-      move(x);
-    };
-    const onUp = () => (dragging.current = false);
-    window.addEventListener("mousemove", onMove);
-    window.addEventListener("mouseup", onUp);
-    window.addEventListener("touchmove", onMove, { passive: true });
-    window.addEventListener("touchend", onUp);
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      window.removeEventListener("mouseup", onUp);
-      window.removeEventListener("touchmove", onMove);
-      window.removeEventListener("touchend", onUp);
-    };
-  }, []);
+  const onPointerDown = (e: React.PointerEvent) => {
+    dragging.current = true;
+    activePointer.current = e.pointerId;
+    (e.currentTarget as Element).setPointerCapture(e.pointerId);
+    move(e.clientX);
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!dragging.current || activePointer.current !== e.pointerId) return;
+    move(e.clientX);
+  };
+  const onPointerUp = (e: React.PointerEvent) => {
+    dragging.current = false;
+    activePointer.current = null;
+    try {
+      (e.currentTarget as Element).releasePointerCapture(e.pointerId);
+    } catch {
+      /* noop */
+    }
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowLeft") setPos((p) => Math.max(0, p - 4));
+    if (e.key === "ArrowRight") setPos((p) => Math.min(100, p + 4));
+    if (e.key === "Home") setPos(0);
+    if (e.key === "End") setPos(100);
+  };
 
   return (
     <div
       ref={ref}
-      className="mt-14 relative aspect-[16/10] w-full overflow-hidden rounded-2xl select-none shadow-[var(--shadow-elegant)]"
+      className="mt-14 relative aspect-[16/10] w-full overflow-hidden rounded-2xl select-none shadow-[var(--shadow-elegant)] touch-pan-y"
       aria-label="Before and after remodel comparison. Use slider to reveal."
     >
       <img
@@ -611,10 +630,11 @@ function BeforeAfter() {
         width={1400}
         height={1000}
         loading="lazy"
-        className="absolute inset-0 h-full w-full object-cover"
+        draggable={false}
+        className="absolute inset-0 h-full w-full object-cover pointer-events-none"
       />
       <div
-        className="absolute inset-0 overflow-hidden"
+        className="absolute inset-0 overflow-hidden pointer-events-none"
         style={{ width: `${pos}%` }}
       >
         <img
@@ -623,8 +643,9 @@ function BeforeAfter() {
           width={1400}
           height={1000}
           loading="lazy"
+          draggable={false}
           className="absolute inset-0 h-full w-full object-cover"
-          style={{ width: `${(100 / pos) * 100}%`, maxWidth: "none" }}
+          style={{ width: `${(100 / Math.max(pos, 0.0001)) * 100}%`, maxWidth: "none" }}
         />
         <span className="absolute top-4 left-4 px-3 py-1 text-xs uppercase tracking-[0.22em] bg-ink/70 text-cream rounded">
           Before
@@ -634,24 +655,27 @@ function BeforeAfter() {
         After
       </span>
 
-      <input
-        type="range"
-        min={0}
-        max={100}
-        value={pos}
-        onChange={(e) => setPos(Number(e.target.value))}
-        aria-label="Reveal before/after"
-        className="absolute inset-0 h-full w-full cursor-ew-resize opacity-0"
-        onMouseDown={() => (dragging.current = true)}
-        onTouchStart={() => (dragging.current = true)}
-      />
-
+      {/* Draggable handle — 44x44 touch target, arrow-key accessible. */}
       <div
-        className="pointer-events-none absolute top-0 bottom-0"
-        style={{ left: `calc(${pos}% - 1px)` }}
+        role="slider"
+        tabIndex={0}
+        aria-label="Reveal before/after"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={Math.round(pos)}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerUp}
+        onKeyDown={onKeyDown}
+        className="absolute top-0 bottom-0 flex items-center justify-center cursor-ew-resize touch-none focus:outline-none"
+        style={{
+          left: `calc(${pos}% - 22px)`,
+          width: 44,
+        }}
       >
-        <div className="h-full w-0.5 bg-cream" />
-        <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 grid h-11 w-11 place-items-center rounded-full bg-cream text-ink shadow-lg">
+        <div className="pointer-events-none absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-cream" />
+        <div className="pointer-events-none grid h-11 w-11 place-items-center rounded-full bg-cream text-ink shadow-lg ring-2 ring-ink/5">
           <span className="text-lg" aria-hidden>
             ⇆
           </span>
@@ -660,6 +684,7 @@ function BeforeAfter() {
     </div>
   );
 }
+
 
 /* ---------------- Process ---------------- */
 

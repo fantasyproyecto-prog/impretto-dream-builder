@@ -129,8 +129,14 @@ function Header() {
           ? "bg-background/85 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       }`}
+      style={{
+        paddingTop: "env(safe-area-inset-top)",
+        paddingLeft: "env(safe-area-inset-left)",
+        paddingRight: "env(safe-area-inset-right)",
+      }}
     >
       <div className="container-lux flex items-center justify-between py-4 md:py-5">
+
         <a href="#top" className="flex items-center gap-2 group" aria-label="Impretto Home home">
           <span className="grid h-9 w-9 place-items-center rounded-sm bg-primary text-primary-foreground font-display text-lg">
             i

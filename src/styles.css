@@ -90,8 +90,14 @@
     border-color: var(--color-border);
   }
 
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
@@ -100,7 +106,37 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     line-height: 1.65;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
   }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.028em;
+    line-height: 1.1;
+  }
+
+  /* Prevent iOS Safari auto-zoom on focus: inputs must be >=16px on mobile. */
+  @media (max-width: 767px) {
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+  }
+
+  /* Apple HIG: 44x44pt minimum touch targets on mobile. */
+  @media (max-width: 767px) and (pointer: coarse) {
+    a[href],
+    button,
+    [role="button"],
+    input[type="submit"],
+    input[type="button"] {
+      min-height: 44px;
+    }
+  }
+
 
   h1, h2, h3, h4 {
     font-family: var(--font-display);

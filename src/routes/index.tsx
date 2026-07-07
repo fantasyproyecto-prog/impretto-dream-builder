@@ -95,9 +95,11 @@ function LandingPage() {
         <FinalCTA />
       </main>
       <Footer />
+      <MobileCtaBar />
     </div>
   );
 }
+
 
 /* ---------------- Header ---------------- */
 

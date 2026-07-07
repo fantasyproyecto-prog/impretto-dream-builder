@@ -751,7 +751,7 @@ function Testimonials() {
           {reviews.map((r) => (
             <figure
               key={r.name}
-              className="rounded-2xl border border-border bg-card p-8 flex flex-col"
+              className="rounded-2xl bg-card p-10 flex flex-col shadow-sm"
             >
               <div className="flex gap-1 text-accent" aria-label="5 out of 5 stars">
                 {Array.from({ length: 5 }).map((_, i) => (

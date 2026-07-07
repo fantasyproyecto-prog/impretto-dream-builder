@@ -437,12 +437,10 @@ function WhyUs() {
           {items.map((it) => (
             <article
               key={it.title}
-              className="group relative rounded-2xl border border-border bg-card p-8 transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)]"
+              className="group relative rounded-2xl bg-card p-10 shadow-sm transition-all hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)]"
             >
-              <div className="grid h-12 w-12 place-items-center rounded-lg bg-primary/5 text-accent">
-                <it.icon className="h-6 w-6" aria-hidden />
-              </div>
-              <h3 className="mt-6 font-display text-2xl">{it.title}</h3>
+              <it.icon className="h-6 w-6 text-accent" strokeWidth={1.25} aria-hidden />
+              <h3 className="mt-8 font-display text-2xl">{it.title}</h3>
               <p className="mt-3 text-muted-foreground leading-relaxed">{it.body}</p>
               <div className="absolute inset-x-8 bottom-0 h-px bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             </article>

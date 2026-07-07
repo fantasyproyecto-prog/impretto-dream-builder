@@ -138,16 +138,16 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.9rem 1.5rem;
-  background: var(--ink);
-  color: var(--cream);
+  padding: 1rem 1.75rem;
+  background: var(--brass);
+  color: #FFFFFF;
   font-weight: 500;
-  letter-spacing: 0.01em;
-  border-radius: var(--radius);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  letter-spacing: 0.005em;
+  border-radius: calc(var(--radius) + 2px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   box-shadow: var(--shadow-soft);
   &:hover {
-    background: color-mix(in oklab, var(--ink) 85%, var(--brass));
+    background: color-mix(in oklab, var(--brass) 88%, #000);
     transform: translateY(-1px);
     box-shadow: var(--shadow-elegant);
   }

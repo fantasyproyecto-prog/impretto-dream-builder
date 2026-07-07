@@ -491,16 +491,16 @@ function Services() {
           {items.map((s, i) => (
             <article
               key={s.title}
-              className="group relative rounded-2xl bg-card border border-border p-8 overflow-hidden"
+              className="group relative rounded-2xl bg-card p-10 overflow-hidden shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow-elegant)]"
             >
-              <span className="absolute top-6 right-6 font-display text-sm text-muted-foreground">
+              <span className="absolute top-8 right-8 font-display text-sm tracking-tight text-accent">
                 0{i + 1}
               </span>
               <h3 className="font-display text-2xl md:text-3xl max-w-sm">{s.title}</h3>
               <p className="mt-4 text-muted-foreground leading-relaxed max-w-md">{s.body}</p>
-              <div className="mt-8 flex items-center gap-2 text-sm text-foreground group-hover:text-accent transition-colors">
+              <div className="mt-8 flex items-center gap-2 text-sm text-accent">
                 <span>Explore this service</span>
-                <span aria-hidden>→</span>
+                <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
               </div>
             </article>
           ))}

@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Impretto Home designs and builds luxury bathroom remodels across the greater metro area. Licensed, insured, transparent pricing, and on-time delivery.",
       },
       { name: "author", content: "Impretto Home" },
-      { property: "og:title", content: "Impretto Home | Luxury Bathroom Remodeling" },
+      { property: "og:title", content: "Impretto Home | Luxury Bathroom Remodeling Contractors" },
       {
         property: "og:description",
         content:
@@ -92,6 +92,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Impretto Home | Luxury Bathroom Remodeling Contractors" },
+      { name: "description", content: "Impretto Home designs and builds luxury bathroom remodels across the greater metro area. Licensed, insured, transparent pricing, and on-time delivery." },
+      { property: "og:description", content: "Impretto Home designs and builds luxury bathroom remodels across the greater metro area. Licensed, insured, transparent pricing, and on-time delivery." },
+      { name: "twitter:description", content: "Impretto Home designs and builds luxury bathroom remodels across the greater metro area. Licensed, insured, transparent pricing, and on-time delivery." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2aa1282c-48f3-49d1-aa62-785776e51ac1/id-preview-b4e141ed--d583b7f9-5277-497d-8f4f-0b112bc5bf10.lovable.app-1783435564251.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2aa1282c-48f3-49d1-aa62-785776e51ac1/id-preview-b4e141ed--d583b7f9-5277-497d-8f4f-0b112bc5bf10.lovable.app-1783435564251.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

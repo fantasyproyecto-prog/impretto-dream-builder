@@ -24,6 +24,8 @@ import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
 import { CinematicScrub } from "@/components/cinematic-scrub";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { MobileCtaBar } from "@/components/mobile-cta-bar";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({

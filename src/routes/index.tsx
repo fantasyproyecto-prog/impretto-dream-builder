@@ -602,7 +602,7 @@ function BeforeAfter() {
   return (
     <div
       ref={ref}
-      className="mt-12 relative aspect-[16/10] w-full overflow-hidden rounded-2xl select-none border border-border shadow-[var(--shadow-soft)]"
+      className="mt-14 relative aspect-[16/10] w-full overflow-hidden rounded-2xl select-none shadow-[var(--shadow-elegant)]"
       aria-label="Before and after remodel comparison. Use slider to reveal."
     >
       <img

@@ -102,6 +102,11 @@ function LandingPage() {
   );
 }
 
+function TranslatedMobileCtaBar() {
+  const { t } = useI18n();
+  return <MobileCtaBar ctaLabel={t.nav.getFreeEstimate} />;
+}
+
 /* ---------------- Header ---------------- */
 
 function Header() {

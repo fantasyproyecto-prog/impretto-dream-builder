@@ -6,7 +6,7 @@ const PHONE_HREF = "tel:+15550142231";
  * Frosted-glass sticky bottom action bar. Mobile-only (< md).
  * Sits above the iOS home indicator via safe-area-inset-bottom.
  */
-export function MobileCtaBar() {
+export function MobileCtaBar({ ctaLabel = "Get Free Estimate" }: { ctaLabel?: string } = {}) {
   return (
     <>
       {/* Spacer so page content isn't hidden behind the bar on mobile. */}
@@ -38,7 +38,7 @@ export function MobileCtaBar() {
             className="btn-brass flex-1 text-base"
             style={{ padding: "0.85rem 1rem", minHeight: 48 }}
           >
-            Get Free Estimate
+            {ctaLabel}
           </a>
         </div>
       </div>

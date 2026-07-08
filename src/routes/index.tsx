@@ -96,7 +96,7 @@ function LandingPage() {
           <FinalCTA />
         </main>
         <Footer />
-        <MobileCtaBar />
+        <TranslatedMobileCtaBar />
       </div>
     </I18nProvider>
   );

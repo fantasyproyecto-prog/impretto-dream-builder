@@ -38,7 +38,7 @@ export function MobileCtaBar({ ctaLabel = "Get Free Estimate" }: { ctaLabel?: st
             className="btn-brass flex-1 text-base"
             style={{ padding: "0.85rem 1rem", minHeight: 48 }}
           >
-            Get Free Estimate
+            {ctaLabel}
           </a>
         </div>
       </div>

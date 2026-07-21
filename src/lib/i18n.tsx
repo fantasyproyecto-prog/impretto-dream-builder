@@ -28,7 +28,9 @@ const EN = {
     lede: "We bring elegance, functionality, and stress-free renovations to your home. Licensed, insured, and built to last — with transparent pricing from day one.",
     badges: ["Licensed & Insured", "10+ Years Experience", "100% Satisfaction"],
     heroAlt:
-      "Luxury master bathroom with freestanding matte black tub, warm marble tile, and brushed brass fixtures by Impretto Home",
+      "Impretto Home master bathroom with Calacatta marble floors, dark charcoal accent wall, custom vanity, and modern glass shower",
+    ctaPrimary: "Claim Your Free Estimate",
+    ctaSecondary: "View Verified Projects",
   },
   quote: {
     ariaLabel: "Free estimate request",

@@ -28,7 +28,9 @@ const EN = {
     lede: "We bring elegance, functionality, and stress-free renovations to your home. Licensed, insured, and built to last — with transparent pricing from day one.",
     badges: ["Licensed & Insured", "10+ Years Experience", "100% Satisfaction"],
     heroAlt:
-      "Luxury master bathroom with freestanding matte black tub, warm marble tile, and brushed brass fixtures by Impretto Home",
+      "Impretto Home master bathroom with Calacatta marble floors, dark charcoal accent wall, custom vanity, and modern glass shower",
+    ctaPrimary: "Claim Your Free Estimate",
+    ctaSecondary: "View Verified Projects",
   },
   quote: {
     ariaLabel: "Free estimate request",
@@ -116,23 +118,33 @@ const EN = {
     ],
   },
   process: {
-    eyebrow: "Our Proven 3-Step Process",
+    eyebrow: "Our White-Glove Process",
     h2a: "From first sketch to final reveal —",
     h2b: "calm and considered.",
     steps: [
       {
-        title: "Free In-Home Consultation & Design",
-        body: "We measure your space, listen to how you use it, and sketch a design direction on the spot.",
+        title: "Consultation & 3D Design",
+        body: "In-home measure, listening session, and a photoreal 3D rendering so you approve the design before we lift a tool.",
       },
       {
-        title: "Transparent Proposal & Material Selection",
-        body: "A line-item proposal — no markups hidden in labor — plus a guided visit to our material library.",
+        title: "Precision Demolition & Waterproofing",
+        body: "Dust-controlled tear-out, structural review, and Schluter waterproofing systems installed to spec — the foundation of a bathroom that lasts.",
       },
       {
-        title: "Precision Craftsmanship & Clean Delivery",
-        body: "Daily site protection, weekly walk-throughs, and a punch-list resolved before final invoice.",
+        title: "Master Tile & Vanity Installation",
+        body: "In-house tile masters, custom cabinetry, and specified-grade fixtures set with millimeter precision by a single dedicated crew.",
+      },
+      {
+        title: "Final Walkthrough & 5-Year Warranty",
+        body: "A punch-list resolved before the final invoice, a spotless handover, and a five-year written warranty on all craftsmanship.",
       },
     ],
+  },
+  verified: {
+    eyebrow: "Verified Local Portfolio",
+    h2: "Real bathrooms. Real neighbors. Real receipts.",
+    lede: "Every project below was designed, permitted, and built by our in-house Impretto Home crew.",
+    badge: "Verified Local Job",
   },
   testimonials: {
     eyebrow: "Homeowner Reviews",
@@ -205,7 +217,9 @@ const ES: Dict = {
     lede: "Aportamos elegancia, funcionalidad y renovaciones sin estrés a tu hogar. Con licencia, asegurados y hechos para durar, con precios transparentes desde el primer día.",
     badges: ["Con Licencia y Asegurados", "Más de 10 Años de Experiencia", "100% Satisfacción"],
     heroAlt:
-      "Baño principal de lujo con tina independiente negra mate, mármol cálido y grifería en bronce cepillado por Impretto Home",
+      "Baño principal Impretto Home con pisos de mármol Calacatta, pared de contraste en carbón, tocador a medida y ducha moderna de cristal",
+    ctaPrimary: "Solicitar Presupuesto Gratis",
+    ctaSecondary: "Ver Proyectos Verificados",
   },
   quote: {
     ariaLabel: "Solicitud de presupuesto gratis",
@@ -293,23 +307,33 @@ const ES: Dict = {
     ],
   },
   process: {
-    eyebrow: "Nuestro Proceso Comprobado de 3 Pasos",
+    eyebrow: "Nuestro Proceso White-Glove",
     h2a: "Del primer boceto a la entrega final —",
     h2b: "tranquilo y bien pensado.",
     steps: [
       {
-        title: "Consulta y Diseño Gratis a Domicilio",
-        body: "Medimos tu espacio, escuchamos cómo lo usas y trazamos una dirección de diseño al momento.",
+        title: "Consulta y Diseño 3D",
+        body: "Medición en casa, sesión de escucha y un renderizado 3D fotorreal para que apruebes el diseño antes de tocar una herramienta.",
       },
       {
-        title: "Propuesta Transparente y Selección de Materiales",
-        body: "Una propuesta detallada — sin recargos ocultos en la mano de obra — más una visita guiada a nuestra biblioteca de materiales.",
+        title: "Demolición de Precisión e Impermeabilización",
+        body: "Demolición con control de polvo, revisión estructural e instalación de sistemas de impermeabilización Schluter — la base de un baño que dura décadas.",
       },
       {
-        title: "Artesanía de Precisión y Entrega Impecable",
-        body: "Protección diaria del sitio, recorridos semanales y una lista de pendientes resuelta antes de la factura final.",
+        title: "Maestría en Azulejo y Tocadores",
+        body: "Maestros del azulejo internos, gabinetería a medida y grifería de grado especificado colocados con precisión milimétrica por un equipo dedicado.",
+      },
+      {
+        title: "Entrega Final y Garantía de 5 Años",
+        body: "Lista de pendientes resuelta antes de la factura final, entrega impecable y garantía escrita de cinco años en toda la mano de obra.",
       },
     ],
+  },
+  verified: {
+    eyebrow: "Portafolio Local Verificado",
+    h2: "Baños reales. Vecinos reales. Pruebas reales.",
+    lede: "Cada proyecto a continuación fue diseñado, permitido y construido por nuestro equipo interno de Impretto Home.",
+    badge: "Trabajo Local Verificado",
   },
   testimonials: {
     eyebrow: "Reseñas de Clientes",

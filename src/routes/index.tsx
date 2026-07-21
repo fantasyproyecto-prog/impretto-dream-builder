@@ -721,7 +721,7 @@ function BeforeAfter() {
 
 function Process() {
   const { t } = useI18n();
-  const icons = [ClipboardList, Ruler, Hammer];
+  const icons = [ClipboardList, ShieldCheck, Hammer, BadgeCheck];
   return (
     <section className="py-24 lg:py-32 bg-primary text-primary-foreground">
       <div className="container-lux">

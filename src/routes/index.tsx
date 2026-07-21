@@ -734,7 +734,7 @@ function Process() {
           </h2>
         </div>
 
-        <ol className="mt-16 grid md:grid-cols-3 gap-10 md:gap-6">
+        <ol className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
           {t.process.steps.map((s, i) => {
             const Icon = icons[i];
             return (

@@ -16,12 +16,23 @@ import {
   X,
 } from "lucide-react";
 
-import heroBathroom from "@/assets/hero-bathroom.jpg";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-import beforeImg from "@/assets/before.jpg";
-import afterImg from "@/assets/after.jpg";
+import p63 from "@/assets/portfolio/p63.jpeg.asset.json";
+import p60 from "@/assets/portfolio/p60.jpeg.asset.json";
+import p54 from "@/assets/portfolio/p54.jpeg.asset.json";
+import p49 from "@/assets/portfolio/p49.jpeg.asset.json";
+import p47 from "@/assets/portfolio/p47.jpeg.asset.json";
+import p46 from "@/assets/portfolio/p46.jpeg.asset.json";
+import p14 from "@/assets/portfolio/p14.jpeg.asset.json";
+import p23 from "@/assets/portfolio/p23.jpeg.asset.json";
+import p26 from "@/assets/portfolio/p26.jpeg.asset.json";
+import p33 from "@/assets/portfolio/p33.jpeg.asset.json";
+
+const heroBathroom = p63.url;
+const project1 = p60.url;
+const project2 = p54.url;
+const project3 = p49.url;
+const beforeImg = p47.url;
+const afterImg = p46.url;
 import { CinematicScrub } from "@/components/cinematic-scrub";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { MobileCtaBar } from "@/components/mobile-cta-bar";

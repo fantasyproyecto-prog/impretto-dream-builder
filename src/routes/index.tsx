@@ -101,6 +101,7 @@ function LandingPage() {
           <WhyUs />
           <Services />
           <Portfolio />
+          <VerifiedCarousel />
           <CinematicScrub />
           <Process />
           <Testimonials />
@@ -110,6 +111,70 @@ function LandingPage() {
         <TranslatedMobileCtaBar />
       </div>
     </I18nProvider>
+  );
+}
+
+/* ---------------- Verified Local Portfolio (infinite marquee) ---------------- */
+
+function VerifiedCarousel() {
+  const { t } = useI18n();
+  const projects = [
+    { src: p14.url, title: "Warm Marble Retreat", city: "Summit, NJ" },
+    { src: p23.url, title: "Freestanding Tub Suite", city: "Westfield, NJ" },
+    { src: p26.url, title: "Calacatta Wet Room", city: "Chatham, NJ" },
+    { src: p33.url, title: "Double Vanity Master", city: "Short Hills, NJ" },
+    { src: p49.url, title: "Detail: Brass & Stone", city: "Madison, NJ" },
+  ];
+  const loop = [...projects, ...projects];
+  return (
+    <section className="py-24 lg:py-32 bg-secondary/40 border-y border-border overflow-hidden">
+      <div className="container-lux max-w-3xl">
+        <span className="eyebrow">{t.verified.eyebrow}</span>
+        <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] text-balance">
+          {t.verified.h2}
+        </h2>
+        <p className="mt-5 text-lg text-muted-foreground">{t.verified.lede}</p>
+      </div>
+
+      <div
+        className="mt-14 relative"
+        style={{
+          maskImage:
+            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+        }}
+      >
+        <div
+          className="flex gap-6 w-max"
+          style={{ animation: "marquee 48s linear infinite" }}
+        >
+          {loop.map((p, i) => (
+            <figure
+              key={i}
+              className="relative w-[320px] sm:w-[420px] shrink-0 rounded-2xl overflow-hidden bg-card shadow-sm"
+            >
+              <img
+                src={p.src}
+                alt={`${p.title} — ${p.city}`}
+                loading="lazy"
+                className="h-[380px] w-full object-cover"
+              />
+              <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 backdrop-blur px-3 py-1 text-[11px] font-medium tracking-wide text-ink shadow-sm">
+                <CheckCircle2 className="h-3.5 w-3.5 text-accent" aria-hidden />
+                {t.verified.badge}
+              </span>
+              <figcaption className="absolute inset-x-0 bottom-0 p-5 text-primary-foreground bg-gradient-to-t from-ink/85 via-ink/30 to-transparent">
+                <div className="font-display text-lg leading-tight">{p.title}</div>
+                <div className="text-xs text-primary-foreground/80 mt-0.5 flex items-center gap-1">
+                  <MapPin className="h-3 w-3" aria-hidden /> {p.city}
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 

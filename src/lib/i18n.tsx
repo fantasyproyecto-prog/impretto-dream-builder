@@ -217,7 +217,9 @@ const ES: Dict = {
     lede: "Aportamos elegancia, funcionalidad y renovaciones sin estrés a tu hogar. Con licencia, asegurados y hechos para durar, con precios transparentes desde el primer día.",
     badges: ["Con Licencia y Asegurados", "Más de 10 Años de Experiencia", "100% Satisfacción"],
     heroAlt:
-      "Baño principal de lujo con tina independiente negra mate, mármol cálido y grifería en bronce cepillado por Impretto Home",
+      "Baño principal Impretto Home con pisos de mármol Calacatta, pared de contraste en carbón, tocador a medida y ducha moderna de cristal",
+    ctaPrimary: "Solicitar Presupuesto Gratis",
+    ctaSecondary: "Ver Proyectos Verificados",
   },
   quote: {
     ariaLabel: "Solicitud de presupuesto gratis",

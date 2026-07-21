@@ -118,23 +118,33 @@ const EN = {
     ],
   },
   process: {
-    eyebrow: "Our Proven 3-Step Process",
+    eyebrow: "Our White-Glove Process",
     h2a: "From first sketch to final reveal —",
     h2b: "calm and considered.",
     steps: [
       {
-        title: "Free In-Home Consultation & Design",
-        body: "We measure your space, listen to how you use it, and sketch a design direction on the spot.",
+        title: "Consultation & 3D Design",
+        body: "In-home measure, listening session, and a photoreal 3D rendering so you approve the design before we lift a tool.",
       },
       {
-        title: "Transparent Proposal & Material Selection",
-        body: "A line-item proposal — no markups hidden in labor — plus a guided visit to our material library.",
+        title: "Precision Demolition & Waterproofing",
+        body: "Dust-controlled tear-out, structural review, and Schluter waterproofing systems installed to spec — the foundation of a bathroom that lasts.",
       },
       {
-        title: "Precision Craftsmanship & Clean Delivery",
-        body: "Daily site protection, weekly walk-throughs, and a punch-list resolved before final invoice.",
+        title: "Master Tile & Vanity Installation",
+        body: "In-house tile masters, custom cabinetry, and specified-grade fixtures set with millimeter precision by a single dedicated crew.",
+      },
+      {
+        title: "Final Walkthrough & 5-Year Warranty",
+        body: "A punch-list resolved before the final invoice, a spotless handover, and a five-year written warranty on all craftsmanship.",
       },
     ],
+  },
+  verified: {
+    eyebrow: "Verified Local Portfolio",
+    h2: "Real bathrooms. Real neighbors. Real receipts.",
+    lede: "Every project below was designed, permitted, and built by our in-house Impretto Home crew.",
+    badge: "Verified Local Job",
   },
   testimonials: {
     eyebrow: "Homeowner Reviews",

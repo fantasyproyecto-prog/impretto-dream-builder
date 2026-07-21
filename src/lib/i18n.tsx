@@ -307,23 +307,33 @@ const ES: Dict = {
     ],
   },
   process: {
-    eyebrow: "Nuestro Proceso Comprobado de 3 Pasos",
+    eyebrow: "Nuestro Proceso White-Glove",
     h2a: "Del primer boceto a la entrega final —",
     h2b: "tranquilo y bien pensado.",
     steps: [
       {
-        title: "Consulta y Diseño Gratis a Domicilio",
-        body: "Medimos tu espacio, escuchamos cómo lo usas y trazamos una dirección de diseño al momento.",
+        title: "Consulta y Diseño 3D",
+        body: "Medición en casa, sesión de escucha y un renderizado 3D fotorreal para que apruebes el diseño antes de tocar una herramienta.",
       },
       {
-        title: "Propuesta Transparente y Selección de Materiales",
-        body: "Una propuesta detallada — sin recargos ocultos en la mano de obra — más una visita guiada a nuestra biblioteca de materiales.",
+        title: "Demolición de Precisión e Impermeabilización",
+        body: "Demolición con control de polvo, revisión estructural e instalación de sistemas de impermeabilización Schluter — la base de un baño que dura décadas.",
       },
       {
-        title: "Artesanía de Precisión y Entrega Impecable",
-        body: "Protección diaria del sitio, recorridos semanales y una lista de pendientes resuelta antes de la factura final.",
+        title: "Maestría en Azulejo y Tocadores",
+        body: "Maestros del azulejo internos, gabinetería a medida y grifería de grado especificado colocados con precisión milimétrica por un equipo dedicado.",
+      },
+      {
+        title: "Entrega Final y Garantía de 5 Años",
+        body: "Lista de pendientes resuelta antes de la factura final, entrega impecable y garantía escrita de cinco años en toda la mano de obra.",
       },
     ],
+  },
+  verified: {
+    eyebrow: "Portafolio Local Verificado",
+    h2: "Baños reales. Vecinos reales. Pruebas reales.",
+    lede: "Cada proyecto a continuación fue diseñado, permitido y construido por nuestro equipo interno de Impretto Home.",
+    badge: "Trabajo Local Verificado",
   },
   testimonials: {
     eyebrow: "Reseñas de Clientes",

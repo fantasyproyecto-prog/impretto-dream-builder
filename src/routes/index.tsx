@@ -31,8 +31,8 @@ const heroBathroom = p63.url;
 const project1 = p60.url;
 const project2 = p54.url;
 const project3 = p49.url;
-const beforeImg = p47.url;
-const afterImg = p46.url;
+const beforeImg = p46.url;
+const afterImg = p47.url;
 import { CinematicScrub } from "@/components/cinematic-scrub";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import { MobileCtaBar } from "@/components/mobile-cta-bar";
@@ -661,7 +661,7 @@ function BeforeAfter() {
     >
       <img
         src={afterImg}
-        alt="After: bright marble bathroom with freestanding tub and brass fixtures"
+        alt="Before: dated 1990s bathroom with beige tile and old vanity"
         width={1400}
         height={1000}
         loading="lazy"
@@ -674,7 +674,7 @@ function BeforeAfter() {
       >
         <img
           src={beforeImg}
-          alt="Before: dated 1990s bathroom with beige tile and old vanity"
+          alt="After: bright marble bathroom with freestanding tub and brass fixtures"
           width={1400}
           height={1000}
           loading="lazy"

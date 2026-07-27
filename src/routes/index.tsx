@@ -661,7 +661,7 @@ function BeforeAfter() {
     >
       <img
         src={afterImg}
-        alt="After: bright marble bathroom with freestanding tub and brass fixtures"
+        alt="Before: dated 1990s bathroom with beige tile and old vanity"
         width={1400}
         height={1000}
         loading="lazy"
@@ -674,7 +674,7 @@ function BeforeAfter() {
       >
         <img
           src={beforeImg}
-          alt="Before: dated 1990s bathroom with beige tile and old vanity"
+          alt="After: bright marble bathroom with freestanding tub and brass fixtures"
           width={1400}
           height={1000}
           loading="lazy"

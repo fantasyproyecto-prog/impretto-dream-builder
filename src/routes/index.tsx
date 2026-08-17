@@ -1,18 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
-  Award,
   BadgeCheck,
   CheckCircle2,
   ClipboardList,
   Hammer,
-  MapPin,
   Menu,
   Phone,
   Ruler,
   ShieldCheck,
   Sparkles,
-  Star,
   X,
 } from "lucide-react";
 
@@ -42,9 +39,29 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
+        title:
+          "Bathroom Remodeling Wesley Chapel & Tampa | Impretto Home",
+      },
+      {
+        name: "description",
+        content:
+          "Premium bathroom remodeling in Wesley Chapel, Tampa, New Tampa & Lutz. Tub-to-shower conversions, walk-in showers, and full remodels managed start to finish.",
+      },
+      {
+        property: "og:title",
+        content: "Bathroom Remodeling Wesley Chapel & Tampa | Impretto Home",
+      },
+      {
+        property: "og:description",
+        content:
+          "Thoughtful design, quality craftsmanship, and a stress-free remodeling experience across Tampa Bay, Florida.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
         name: "keywords",
         content:
-          "luxury bathroom remodeling, master bathroom renovation, custom shower conversion, bathroom contractor, accessible bathroom upgrades, remodelación de baños, remodelación de baño de lujo",
+          "Bathroom Remodeling Wesley Chapel, Bathroom Remodeling Tampa, Bathroom Remodeling New Tampa, Bathroom Remodeling Lutz, Tub-to-Shower Conversion Wesley Chapel, Tampa Bay Bathroom Remodeling",
       },
     ],
     scripts: [
@@ -54,31 +71,24 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           name: "Impretto Home",
-          image: "/impretto-og.jpg",
-          telephone: "+1-555-014-2231",
+          description:
+            "Premium bathroom remodeling serving Wesley Chapel & Tampa Bay, Florida.",
+          telephone: "+1-813-415-6599",
           priceRange: "$$$",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "128 Cedar Grove Ave",
-            addressLocality: "Westfield",
-            addressRegion: "NJ",
-            postalCode: "07090",
+            addressLocality: "Wesley Chapel",
+            addressRegion: "FL",
             addressCountry: "US",
           },
           areaServed: [
-            "Westfield",
-            "Summit",
-            "Chatham",
-            "Short Hills",
-            "Morristown",
-            "Union County",
-            "Essex County",
+            "Wesley Chapel",
+            "Tampa",
+            "New Tampa",
+            "Lutz",
+            "Land O' Lakes",
+            "Tampa Bay",
           ],
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "4.9",
-            reviewCount: "184",
-          },
         }),
       },
     ],
@@ -86,8 +96,8 @@ export const Route = createFileRoute("/")({
   component: LandingPage,
 });
 
-const PHONE_DISPLAY = "(555) 014-2231";
-const PHONE_HREF = "tel:+15550142231";
+const PHONE_DISPLAY = "(813) 415-6599";
+const PHONE_HREF = "tel:+18134156599";
 
 function LandingPage() {
   return (
@@ -101,10 +111,10 @@ function LandingPage() {
           <WhyUs />
           <Services />
           <Portfolio />
-          <VerifiedCarousel />
+          <ProjectsCarousel />
           <CinematicScrub />
           <Process />
-          <Testimonials />
+          <Standards />
           <FinalCTA />
         </main>
         <Footer />
@@ -114,16 +124,16 @@ function LandingPage() {
   );
 }
 
-/* ---------------- Verified Local Portfolio (infinite marquee) ---------------- */
+/* ---------------- Selected work (infinite marquee) ---------------- */
 
-function VerifiedCarousel() {
+function ProjectsCarousel() {
   const { t } = useI18n();
   const projects = [
-    { src: p14.url, title: "Warm Marble Retreat", city: "Summit, NJ" },
-    { src: p23.url, title: "Freestanding Tub Suite", city: "Westfield, NJ" },
-    { src: p26.url, title: "Calacatta Wet Room", city: "Chatham, NJ" },
-    { src: p33.url, title: "Double Vanity Master", city: "Short Hills, NJ" },
-    { src: p49.url, title: "Detail: Brass & Stone", city: "Madison, NJ" },
+    { src: p14.url, title: "Warm Marble Retreat" },
+    { src: p23.url, title: "Freestanding Tub Suite" },
+    { src: p26.url, title: "Calacatta Wet Room" },
+    { src: p33.url, title: "Double Vanity Master" },
+    { src: p49.url, title: "Detail: Stone & Fixtures" },
   ];
   const loop = [...projects, ...projects];
   return (
@@ -156,19 +166,15 @@ function VerifiedCarousel() {
             >
               <img
                 src={p.src}
-                alt={`${p.title} — ${p.city}`}
+                alt={`${p.title} — Impretto Home bathroom remodeling project`}
                 loading="lazy"
                 className="h-[380px] w-full object-cover"
               />
-              <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-white/90 backdrop-blur px-3 py-1 text-[11px] font-medium tracking-wide text-ink shadow-sm">
-                <CheckCircle2 className="h-3.5 w-3.5 text-accent" aria-hidden />
+              <span className="absolute top-4 left-4 inline-flex items-center rounded-full bg-ink/75 backdrop-blur px-3 py-1 text-[11px] font-medium uppercase tracking-[0.16em] text-cream">
                 {t.verified.badge}
               </span>
               <figcaption className="absolute inset-x-0 bottom-0 p-5 text-primary-foreground bg-gradient-to-t from-ink/85 via-ink/30 to-transparent">
                 <div className="font-display text-lg leading-tight">{p.title}</div>
-                <div className="text-xs text-primary-foreground/80 mt-0.5 flex items-center gap-1">
-                  <MapPin className="h-3 w-3" aria-hidden /> {p.city}
-                </div>
               </figcaption>
             </figure>
           ))}
@@ -194,7 +200,7 @@ function Header() {
     { href: "#services", label: t.nav.services },
     { href: "#portfolio", label: t.nav.portfolio },
     { href: "#why-us", label: t.nav.whyUs },
-    { href: "#testimonials", label: t.nav.testimonials },
+    { href: "#standards", label: t.nav.standards },
     { href: "#contact", label: t.nav.contact },
   ];
 
@@ -296,7 +302,7 @@ function Header() {
 
 function Hero() {
   const { t } = useI18n();
-  const badgeIcons = [ShieldCheck, Award, BadgeCheck];
+  const badgeIcons = [Ruler, ClipboardList, ShieldCheck];
   return (
     <section id="top" className="relative overflow-hidden">
       <div className="container-lux grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 pt-10 pb-20 lg:pt-16 lg:pb-28">
@@ -304,8 +310,7 @@ function Hero() {
           <span className="eyebrow">{t.hero.eyebrow}</span>
           <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-balance">
             {t.hero.h1a}{" "}
-            <em className="not-italic text-accent font-normal">{t.hero.h1b}</em>{" "}
-            {t.hero.h1c}
+            <em className="not-italic text-accent font-semibold">{t.hero.h1b}</em>
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
             {t.hero.lede}
@@ -316,7 +321,7 @@ function Hero() {
               const Icon = badgeIcons[i];
               return (
                 <li key={label} className="flex items-center gap-2 text-sm text-foreground/80">
-                  <Icon className="h-5 w-5 text-accent" aria-hidden />
+                  <Icon className="h-5 w-5 text-accent" strokeWidth={1.5} aria-hidden />
                   {label}
                 </li>
               );
@@ -344,12 +349,14 @@ function Hero() {
   );
 }
 
+type QuoteErrors = Partial<Record<"name" | "phone" | "zip" | "scope" | "timeline", string>>;
+
 function QuoteForm() {
   const { t } = useI18n();
-  const [state, setState] = useState<{
-    submitted: boolean;
-    errors: Partial<Record<"name" | "phone" | "zip", string>>;
-  }>({ submitted: false, errors: {} });
+  const [state, setState] = useState<{ submitted: boolean; errors: QuoteErrors }>({
+    submitted: false,
+    errors: {},
+  });
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -357,11 +364,15 @@ function QuoteForm() {
     const name = String(fd.get("name") ?? "").trim();
     const phone = String(fd.get("phone") ?? "").trim();
     const zip = String(fd.get("zip") ?? "").trim();
+    const scope = String(fd.get("scope") ?? "").trim();
+    const timeline = String(fd.get("timeline") ?? "").trim();
 
-    const errors: typeof state.errors = {};
+    const errors: QuoteErrors = {};
     if (name.length < 2) errors.name = t.quote.errName;
     if (!/^[+()\d\s\-.]{10,}$/.test(phone)) errors.phone = t.quote.errPhone;
     if (!/^\d{5}$/.test(zip)) errors.zip = t.quote.errZip;
+    if (!scope) errors.scope = t.quote.errScope;
+    if (!timeline) errors.timeline = t.quote.errTimeline;
 
     if (Object.keys(errors).length) {
       setState({ submitted: false, errors });
@@ -375,11 +386,11 @@ function QuoteForm() {
       id="contact"
       onSubmit={onSubmit}
       noValidate
-      className="relative lg:absolute lg:-bottom-14 lg:-left-10 lg:right-6 mt-6 lg:mt-0 bg-card text-card-foreground rounded-2xl p-6 sm:p-7 shadow-[var(--shadow-elegant)] border border-border"
+      className="relative lg:absolute lg:-bottom-24 lg:-left-10 lg:right-6 mt-6 lg:mt-0 bg-card text-card-foreground rounded-2xl p-6 sm:p-7 shadow-[var(--shadow-elegant)] border border-border"
       aria-label={t.quote.ariaLabel}
     >
       <div className="flex items-center gap-2">
-        <Sparkles className="h-4 w-4 text-accent" aria-hidden />
+        <Sparkles className="h-4 w-4 text-accent" strokeWidth={1.5} aria-hidden />
         <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
           {t.quote.eyebrow}
         </p>
@@ -419,6 +430,22 @@ function QuoteForm() {
               error={state.errors.zip}
             />
           </div>
+          <SelectField
+            id="scope"
+            name="scope"
+            label={t.quote.scope}
+            placeholder={t.quote.select}
+            options={t.quote.scopeOptions}
+            error={state.errors.scope}
+          />
+          <SelectField
+            id="timeline"
+            name="timeline"
+            label={t.quote.timeline}
+            placeholder={t.quote.select}
+            options={t.quote.timelineOptions}
+            error={state.errors.timeline}
+          />
           <button type="submit" className="btn-brass w-full mt-1">
             {t.quote.submit}
           </button>
@@ -430,6 +457,11 @@ function QuoteForm() {
     </form>
   );
 }
+
+const fieldClass = (error?: string) =>
+  `w-full rounded-md border bg-background px-3.5 py-2.5 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/30 ${
+    error ? "border-destructive" : "border-input"
+  }`;
 
 function Field({
   id,
@@ -457,9 +489,7 @@ function Field({
         required
         aria-invalid={!!error}
         aria-describedby={error ? `${id}-err` : undefined}
-        className={`w-full rounded-md border bg-background px-3.5 py-2.5 text-sm outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/30 ${
-          error ? "border-destructive" : "border-input"
-        }`}
+        className={fieldClass(error)}
         {...rest}
       />
       {error && (
@@ -471,7 +501,53 @@ function Field({
   );
 }
 
-/* ---------------- Trust strip ---------------- */
+function SelectField({
+  id,
+  name,
+  label,
+  placeholder,
+  options,
+  error,
+}: {
+  id: string;
+  name: string;
+  label: string;
+  placeholder: string;
+  options: readonly string[];
+  error?: string;
+}) {
+  return (
+    <div>
+      <label htmlFor={id} className="block text-xs font-medium text-muted-foreground mb-1.5">
+        {label}
+      </label>
+      <select
+        id={id}
+        name={name}
+        defaultValue=""
+        aria-invalid={!!error}
+        aria-describedby={error ? `${id}-err` : undefined}
+        className={fieldClass(error)}
+      >
+        <option value="" disabled>
+          {placeholder}
+        </option>
+        {options.map((o) => (
+          <option key={o} value={o}>
+            {o}
+          </option>
+        ))}
+      </select>
+      {error && (
+        <p id={`${id}-err`} className="mt-1 text-xs text-destructive">
+          {error}
+        </p>
+      )}
+    </div>
+  );
+}
+
+/* ---------------- Service areas strip ---------------- */
 
 function TrustStrip() {
   const { t } = useI18n();
@@ -492,7 +568,7 @@ function TrustStrip() {
 
 function WhyUs() {
   const { t } = useI18n();
-  const icons = [Ruler, Sparkles, CheckCircle2];
+  const icons = [ShieldCheck, ClipboardList, Ruler];
   return (
     <section id="why-us" className="py-24 lg:py-32">
       <div className="container-lux">
@@ -525,6 +601,36 @@ function WhyUs() {
   );
 }
 
+/* ---------------- Standards ---------------- */
+
+function Standards() {
+  const { t } = useI18n();
+  return (
+    <section id="standards" className="py-24 lg:py-32">
+      <div className="container-lux">
+        <div className="max-w-2xl">
+          <span className="eyebrow">{t.standards.eyebrow}</span>
+          <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] text-balance">
+            {t.standards.h2}
+          </h2>
+        </div>
+
+        <ul className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {t.standards.items.map((item) => (
+            <li
+              key={item}
+              className="flex items-center gap-3 rounded-2xl bg-card p-6 shadow-sm"
+            >
+              <CheckCircle2 className="h-5 w-5 shrink-0 text-accent" strokeWidth={1.5} aria-hidden />
+              <span className="font-display text-lg leading-snug">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- Services ---------------- */
 
 function Services() {
@@ -545,22 +651,48 @@ function Services() {
         </div>
 
         <div className="mt-14 grid sm:grid-cols-2 gap-5">
-          {t.services.items.map((s, i) => (
-            <article
-              key={s.title}
-              className="group relative rounded-2xl bg-card p-10 overflow-hidden shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow-elegant)]"
-            >
-              <span className="absolute top-8 right-8 font-display text-sm tracking-tight text-accent">
-                0{i + 1}
-              </span>
-              <h3 className="font-display text-2xl md:text-3xl max-w-sm">{s.title}</h3>
-              <p className="mt-4 text-muted-foreground leading-relaxed max-w-md">{s.body}</p>
-              <div className="mt-8 flex items-center gap-2 text-sm text-accent">
-                <span>{t.services.explore}</span>
-                <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
-              </div>
-            </article>
-          ))}
+          {t.services.items.map((s, i) => {
+            const featured = i === 0;
+            return (
+              <article
+                key={s.title}
+                className={`group relative rounded-2xl p-10 overflow-hidden shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[var(--shadow-elegant)] ${
+                  featured
+                    ? "sm:col-span-2 bg-primary text-primary-foreground"
+                    : "bg-card"
+                }`}
+              >
+                <span
+                  className={`absolute top-8 right-8 font-display text-sm tracking-tight ${
+                    featured ? "text-accent" : "text-accent"
+                  }`}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                {featured && (
+                  <span className="inline-flex items-center rounded-full border border-accent/50 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-accent">
+                    {t.services.featured}
+                  </span>
+                )}
+                <h3
+                  className={`font-display text-2xl md:text-3xl max-w-sm ${featured ? "mt-5" : ""}`}
+                >
+                  {s.title}
+                </h3>
+                <p
+                  className={`mt-4 leading-relaxed max-w-md ${
+                    featured ? "text-primary-foreground/75" : "text-muted-foreground"
+                  }`}
+                >
+                  {s.body}
+                </p>
+                <div className="mt-8 flex items-center gap-2 text-sm text-accent">
+                  <span>{t.services.explore}</span>
+                  <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -572,9 +704,18 @@ function Services() {
 function Portfolio() {
   const { t } = useI18n();
   const gallery = [
-    { src: project1, alt: "Custom marble walk-in shower with brushed brass rainfall showerhead" },
-    { src: project2, alt: "White oak double vanity with round backlit mirrors and matte black faucets" },
-    { src: project3, alt: "Charcoal powder room with terrazzo floor, brass sconces, and stone vessel sink" },
+    {
+      src: project1,
+      alt: "Master bathroom renovation with marble walk-in shower and rainfall showerhead",
+    },
+    {
+      src: project2,
+      alt: "Custom vanity with premium materials and precision tile installation",
+    },
+    {
+      src: project3,
+      alt: "Design detail: natural stone surface with modern fixtures",
+    },
   ];
   return (
     <section id="portfolio" className="py-24 lg:py-32">
@@ -661,7 +802,7 @@ function BeforeAfter() {
     >
       <img
         src={afterImg}
-        alt="Before: dated 1990s bathroom with beige tile and old vanity"
+        alt="After: bright marble bathroom with modern fixtures"
         width={1400}
         height={1000}
         loading="lazy"
@@ -674,7 +815,7 @@ function BeforeAfter() {
       >
         <img
           src={beforeImg}
-          alt="After: bright marble bathroom with freestanding tub and brass fixtures"
+          alt="Before: dated bathroom prior to remodeling"
           width={1400}
           height={1000}
           loading="lazy"
@@ -721,7 +862,7 @@ function BeforeAfter() {
 
 function Process() {
   const { t } = useI18n();
-  const icons = [ClipboardList, ShieldCheck, Hammer, BadgeCheck];
+  const icons = [Ruler, Sparkles, ClipboardList, Hammer, BadgeCheck];
   return (
     <section className="py-24 lg:py-32 bg-primary text-primary-foreground">
       <div className="container-lux">
@@ -734,14 +875,16 @@ function Process() {
           </h2>
         </div>
 
-        <ol className="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-8">
+        <ol className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-8">
           {t.process.steps.map((s, i) => {
             const Icon = icons[i];
             return (
               <li key={s.title} className="relative">
                 <div className="flex items-center gap-4">
-                  <span className="font-display text-5xl text-accent leading-none">0{i + 1}</span>
-                  <Icon className="h-6 w-6 text-primary-foreground/70" aria-hidden />
+                  <span className="font-display text-5xl text-accent leading-none">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <Icon className="h-6 w-6 text-primary-foreground/70" strokeWidth={1.5} aria-hidden />
                 </div>
                 <h3 className="mt-6 font-display text-2xl">{s.title}</h3>
                 <p className="mt-3 text-primary-foreground/70 leading-relaxed max-w-sm">
@@ -751,48 +894,6 @@ function Process() {
             );
           })}
         </ol>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- Testimonials ---------------- */
-
-function Testimonials() {
-  const { t } = useI18n();
-  return (
-    <section id="testimonials" className="py-24 lg:py-32">
-      <div className="container-lux">
-        <div className="max-w-2xl">
-          <span className="eyebrow">{t.testimonials.eyebrow}</span>
-          <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] text-balance">
-            {t.testimonials.h2}
-          </h2>
-        </div>
-
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
-          {t.testimonials.reviews.map((r) => (
-            <figure
-              key={r.name}
-              className="rounded-2xl bg-card p-10 flex flex-col shadow-sm"
-            >
-              <div className="flex gap-1 text-accent" aria-label={t.testimonials.starsAria}>
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
-                ))}
-              </div>
-              <blockquote className="mt-5 text-foreground/90 leading-relaxed font-display text-lg">
-                &ldquo;{r.quote}&rdquo;
-              </blockquote>
-              <figcaption className="mt-6 pt-6 border-t border-border text-sm">
-                <div className="font-medium text-foreground">{r.name}</div>
-                <div className="text-muted-foreground flex items-center gap-1.5 mt-0.5">
-                  <MapPin className="h-3.5 w-3.5" aria-hidden /> {r.city}
-                </div>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
       </div>
     </section>
   );
@@ -831,29 +932,29 @@ function Footer() {
     { href: "#services", label: t.nav.services },
     { href: "#portfolio", label: t.nav.portfolio },
     { href: "#why-us", label: t.nav.whyUs },
-    { href: "#testimonials", label: t.nav.testimonials },
+    { href: "#standards", label: t.nav.standards },
     { href: "#contact", label: t.nav.contact },
   ];
   const areas = [
-    "Westfield",
-    "Summit",
-    "Chatham",
-    "Short Hills",
-    "Millburn",
-    "Morristown",
-    "Madison",
-    "Cranford",
-    "Union County",
-    "Essex County",
-    "Morris County",
-    "Somerset County",
+    "Wesley Chapel",
+    "Tampa",
+    "New Tampa",
+    "Lutz",
+    "Land O' Lakes",
+    "Odessa",
+    "Zephyrhills",
+    "Trinity",
+    "Carrollwood",
+    "Pasco County",
+    "Hillsborough County",
+    "Tampa Bay",
   ];
   return (
     <footer className="bg-primary text-primary-foreground pt-20 pb-8">
       <div className="container-lux grid gap-12 lg:grid-cols-[1.2fr_1fr_1.2fr]">
         <div>
           <div className="flex items-center gap-2">
-            <span className="grid h-9 w-9 place-items-center rounded-sm bg-accent text-ink font-display text-lg">
+            <span className="grid h-9 w-9 place-items-center rounded-sm bg-accent text-primary-foreground font-display text-lg">
               i
             </span>
             <span className="font-display text-xl">Impretto Home</span>
@@ -862,8 +963,6 @@ function Footer() {
             {t.footer.tagline}
           </p>
           <div className="mt-6 space-y-1.5 text-sm text-primary-foreground/80">
-            <p>Impretto Home LLC</p>
-            <p>128 Cedar Grove Ave, Westfield, NJ 07090</p>
             <p>
               <a href={PHONE_HREF} className="hover:text-accent transition-colors">
                 {PHONE_DISPLAY}
@@ -903,7 +1002,7 @@ function Footer() {
       </div>
 
       <div className="container-lux mt-16 pt-6 border-t border-primary-foreground/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-primary-foreground/60">
-        <p>© {new Date().getFullYear()} Impretto Home LLC. {t.footer.rights} NJ HIC #13VH12345600.</p>
+        <p>© {new Date().getFullYear()} Impretto Home. {t.footer.rights}</p>
         <div className="flex gap-6">
           <a href="#" className="hover:text-accent transition-colors">
             {t.footer.privacy}

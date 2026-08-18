@@ -1,6 +1,6 @@
 import { Phone } from "lucide-react";
 
-const PHONE_HREF = "tel:+18134156599";
+const WHATSAPP_HREF = "https://wa.me/18134156599";
 
 /**
  * Frosted-glass sticky bottom action bar. Mobile-only (< md).
@@ -27,8 +27,10 @@ export function MobileCtaBar({ ctaLabel = "Get Free Estimate" }: { ctaLabel?: st
       >
         <div className="flex items-center gap-2">
           <a
-            href={PHONE_HREF}
-            aria-label="Call Impretto Home"
+            href={WHATSAPP_HREF}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Chat with Impretto Home on WhatsApp"
             className="inline-flex h-12 min-w-[48px] items-center justify-center rounded-xl border border-ink/15 bg-white text-ink shadow-sm active:scale-[0.98] transition"
           >
             <Phone className="h-5 w-5" aria-hidden />

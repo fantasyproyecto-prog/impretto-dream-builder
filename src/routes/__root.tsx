@@ -77,25 +77,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Impretto Home | Luxury Bathroom Remodeling Contractors" },
+      { title: "Impretto Home | Bathroom Remodeling Wesley Chapel & Tampa Bay" },
       {
         name: "description",
         content:
-          "Impretto Home designs and builds luxury bathroom remodels across the greater metro area. Licensed, insured, transparent pricing, and on-time delivery.",
+          "Premium bathroom remodeling in Wesley Chapel, Tampa, New Tampa & Lutz, Florida. Thoughtful design, quality craftsmanship, and a stress-free experience.",
       },
       { name: "author", content: "Impretto Home" },
-      { property: "og:title", content: "Impretto Home | Luxury Bathroom Remodeling Contractors" },
+      { property: "og:title", content: "Impretto Home | Bathroom Remodeling Wesley Chapel & Tampa Bay" },
       {
         property: "og:description",
         content:
-          "Custom design, premium materials, and clean, on-time craftsmanship for master baths, showers, vanities, and accessible upgrades.",
+          "Tub-to-shower conversions, walk-in showers, master baths, and full remodels across Tampa Bay, Florida.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Impretto Home | Luxury Bathroom Remodeling Contractors" },
-      { name: "description", content: "Impretto Home designs and builds luxury bathroom remodels across the greater metro area. Licensed, insured, transparent pricing, and on-time delivery." },
-      { property: "og:description", content: "Impretto Home designs and builds luxury bathroom remodels across the greater metro area. Licensed, insured, transparent pricing, and on-time delivery." },
-      { name: "twitter:description", content: "Impretto Home designs and builds luxury bathroom remodels across the greater metro area. Licensed, insured, transparent pricing, and on-time delivery." },
+      { name: "twitter:title", content: "Impretto Home | Bathroom Remodeling Wesley Chapel & Tampa Bay" },
+      { name: "description", content: "Premium bathroom remodeling in Wesley Chapel, Tampa, New Tampa & Lutz, Florida. Thoughtful design, quality craftsmanship, and a stress-free experience." },
+      { property: "og:description", content: "Premium bathroom remodeling in Wesley Chapel, Tampa, New Tampa & Lutz, Florida. Thoughtful design, quality craftsmanship, and a stress-free experience." },
+      { name: "twitter:description", content: "Premium bathroom remodeling in Wesley Chapel, Tampa, New Tampa & Lutz, Florida. Thoughtful design, quality craftsmanship, and a stress-free experience." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2aa1282c-48f3-49d1-aa62-785776e51ac1/id-preview-b4e141ed--d583b7f9-5277-497d-8f4f-0b112bc5bf10.lovable.app-1783435564251.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2aa1282c-48f3-49d1-aa62-785776e51ac1/id-preview-b4e141ed--d583b7f9-5277-497d-8f4f-0b112bc5bf10.lovable.app-1783435564251.png" },
     ],

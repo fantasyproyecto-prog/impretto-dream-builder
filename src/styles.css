@@ -45,8 +45,8 @@
   --color-ink: var(--ink);
   --color-cream: var(--cream);
 
-  --font-display: "Montserrat", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Manrope", ui-sans-serif, system-ui, sans-serif;
 
   --shadow-elegant: 0 24px 60px -32px color-mix(in oklab, var(--ink) 22%, transparent);
   --shadow-soft: 0 8px 28px -14px color-mix(in oklab, var(--ink) 14%, transparent);

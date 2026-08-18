@@ -97,7 +97,7 @@ export const Route = createFileRoute("/")({
 });
 
 const PHONE_DISPLAY = "(813) 415-6599";
-const PHONE_HREF = "tel:+18134156599";
+const PHONE_HREF = "https://wa.me/18134156599";
 
 function LandingPage() {
   return (

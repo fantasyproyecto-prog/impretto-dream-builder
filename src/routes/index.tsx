@@ -336,7 +336,7 @@ function Hero() {
               alt={t.hero.heroAlt}
               width={1600}
               height={1200}
-              className="h-[380px] sm:h-[460px] w-full object-cover"
+              className="h-[380px] sm:h-[560px] w-full object-cover"
               fetchPriority="high"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent pointer-events-none" />
@@ -386,7 +386,7 @@ function QuoteForm() {
       id="contact"
       onSubmit={onSubmit}
       noValidate
-      className="relative lg:absolute lg:-bottom-24 lg:-left-10 lg:right-6 mt-6 lg:mt-0 bg-card text-card-foreground rounded-2xl p-6 sm:p-7 shadow-[var(--shadow-elegant)] border border-border"
+      className="relative lg:absolute lg:-bottom-10 lg:-left-10 lg:right-6 mt-6 lg:mt-0 bg-card text-card-foreground rounded-2xl p-6 sm:p-7 shadow-[var(--shadow-elegant)] border border-border"
       aria-label={t.quote.ariaLabel}
     >
       <div className="flex items-center gap-2">

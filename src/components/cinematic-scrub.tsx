@@ -212,7 +212,7 @@ export function CinematicScrub() {
               >
                 <p className="font-display text-xl sm:text-2xl">Ready to walk through yours?</p>
                 <a href="#contact" className="btn-brass text-base">
-                  Get a Free Estimate
+                  Get Your Free Estimate
                 </a>
               </div>
 
@@ -241,7 +241,7 @@ function LiteOverlay() {
         Step inside a <em className="not-italic text-accent">finished remodel.</em>
       </h2>
       <a href="#contact" className="btn-brass mt-8 text-base">
-        Get a Free Estimate
+        Get Your Free Estimate
       </a>
     </div>
   );

@@ -1,6 +1,6 @@
 import { Phone } from "lucide-react";
 
-const PHONE_HREF = "tel:+15550142231";
+const PHONE_HREF = "tel:+18134156599";
 
 /**
  * Frosted-glass sticky bottom action bar. Mobile-only (< md).

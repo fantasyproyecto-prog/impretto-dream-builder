@@ -55,12 +55,12 @@
 :root {
   --radius: 0.75rem;
 
-  /* Layered white architecture — spa-inspired palette */
-  --cream: #F5F6F9;              /* alabaster background */
-  --ink: #1A1C20;                /* deep charcoal text */
-  --brass: #4A6B5B;              /* eucalyptus / sage accent */
-  --brass-soft: #E4EBE6;         /* soft sage tint */
-  --clay: #8A9691;               /* brushed slate */
+  /* Premium minimalist — deep black + luxurious green */
+  --cream: #F7F8F7;              /* soft white background */
+  --ink: #0B0C0B;                /* deep black */
+  --brass: #1F6F4A;              /* luxurious emerald green accent */
+  --brass-soft: #E3EFE8;         /* soft green tint */
+  --clay: #7E8A83;               /* muted slate green */
 
   --background: var(--cream);
   --foreground: var(--ink);
@@ -74,14 +74,14 @@
   --primary-foreground: #FFFFFF;
   --secondary: #FFFFFF;
   --secondary-foreground: var(--ink);
-  --muted: #EEF0F3;
-  --muted-foreground: #6B7078;
+  --muted: #EDEFEE;
+  --muted-foreground: #676E6A;
   --accent: var(--brass);
   --accent-foreground: #FFFFFF;
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: #ECEEF2;
-  --input: #E4E7EC;
+  --border: #E9ECEA;
+  --input: #DFE3E1;
   --ring: var(--brass);
 }
 

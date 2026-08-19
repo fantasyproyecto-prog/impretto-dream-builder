@@ -248,7 +248,7 @@ function Header() {
 
         <div className="hidden md:flex items-center gap-3">
           <LangToggle />
-          <a href={PHONE_HREF} className="btn-outline-ink text-sm">
+          <a href={PHONE_HREF} target="_blank" rel="noopener noreferrer" className="btn-outline-ink text-sm">
             <Phone className="h-4 w-4" aria-hidden /> {PHONE_DISPLAY}
           </a>
           <a href="#contact" className="btn-brass text-sm">
@@ -284,7 +284,7 @@ function Header() {
               </a>
             ))}
             <div className="flex gap-3 pt-4">
-              <a href={PHONE_HREF} className="btn-outline-ink flex-1 text-sm">
+              <a href={PHONE_HREF} target="_blank" rel="noopener noreferrer" className="btn-outline-ink flex-1 text-sm">
                 <Phone className="h-4 w-4" /> {t.nav.call}
               </a>
               <a href="#contact" onClick={() => setOpen(false)} className="btn-brass flex-1 text-sm">
@@ -915,7 +915,7 @@ function FinalCTA() {
           <a href="#contact" className="btn-brass">
             {t.finalCta.claim}
           </a>
-          <a href={PHONE_HREF} className="btn-outline-ink">
+          <a href={PHONE_HREF} target="_blank" rel="noopener noreferrer" className="btn-outline-ink">
             <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
           </a>
         </div>

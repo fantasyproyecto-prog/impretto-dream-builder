@@ -964,7 +964,7 @@ function Footer() {
           </p>
           <div className="mt-6 space-y-1.5 text-sm text-primary-foreground/80">
             <p>
-              <a href={PHONE_HREF} className="hover:text-accent transition-colors">
+              <a href={PHONE_HREF} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
                 {PHONE_DISPLAY}
               </a>{" "}
               ·{" "}

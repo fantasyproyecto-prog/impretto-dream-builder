@@ -13,16 +13,16 @@ import {
   X,
 } from "lucide-react";
 
-import p63 from "@/assets/portfolio/p63.jpeg.asset.json";
-import p60 from "@/assets/portfolio/p60.jpeg.asset.json";
-import p54 from "@/assets/portfolio/p54.jpeg.asset.json";
-import p49 from "@/assets/portfolio/p49.jpeg.asset.json";
-import p47 from "@/assets/portfolio/p47.jpeg.asset.json";
-import p46 from "@/assets/portfolio/p46.jpeg.asset.json";
-import p14 from "@/assets/portfolio/p14.jpeg.asset.json";
-import p23 from "@/assets/portfolio/p23.jpeg.asset.json";
-import p26 from "@/assets/portfolio/p26.jpeg.asset.json";
-import p33 from "@/assets/portfolio/p33.jpeg.asset.json";
+const p63 = { url: "/images/p63.jpeg" };
+const p60 = { url: "/images/p60.jpeg" };
+const p54 = { url: "/images/p54.jpeg" };
+const p49 = { url: "/images/p49.jpeg" };
+const p47 = { url: "/images/p47.jpeg" };
+const p46 = { url: "/images/p46.jpeg" };
+const p14 = { url: "/images/p14.jpeg" };
+const p23 = { url: "/images/p23.jpeg" };
+const p26 = { url: "/images/p26.jpeg" };
+const p33 = { url: "/images/p33.jpeg" };
 
 const heroBathroom = p63.url;
 const project1 = p60.url;

@@ -97,8 +97,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Premium bathroom remodeling in Wesley Chapel, Tampa, New Tampa & Lutz, Florida. Thoughtful design, quality craftsmanship, and a stress-free experience." },
       { property: "og:description", content: "Premium bathroom remodeling in Wesley Chapel, Tampa, New Tampa & Lutz, Florida. Thoughtful design, quality craftsmanship, and a stress-free experience." },
       { name: "twitter:description", content: "Premium bathroom remodeling in Wesley Chapel, Tampa, New Tampa & Lutz, Florida. Thoughtful design, quality craftsmanship, and a stress-free experience." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2aa1282c-48f3-49d1-aa62-785776e51ac1/id-preview-b4e141ed--d583b7f9-5277-497d-8f4f-0b112bc5bf10.lovable.app-1783435564251.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/2aa1282c-48f3-49d1-aa62-785776e51ac1/id-preview-b4e141ed--d583b7f9-5277-497d-8f4f-0b112bc5bf10.lovable.app-1783435564251.png" },
+      { property: "og:image", content: "https://impretto-dream-builder.lovable.app/__l5e/assets-v1/8b731e82-1bb5-4e38-aae9-5acf9404f7e8/p63.jpeg" },
+      { name: "twitter:image", content: "https://impretto-dream-builder.lovable.app/__l5e/assets-v1/8b731e82-1bb5-4e38-aae9-5acf9404f7e8/p63.jpeg" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

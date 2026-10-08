@@ -352,13 +352,15 @@ function Hero() {
 type QuoteErrors = Partial<Record<"name" | "phone" | "zip" | "scope" | "timeline", string>>;
 
 function QuoteForm() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [state, setState] = useState<{ submitted: boolean; errors: QuoteErrors }>({
     submitted: false,
     errors: {},
   });
+  const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
-  function onSubmit(e: FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const name = String(fd.get("name") ?? "").trim();
@@ -378,7 +380,17 @@ function QuoteForm() {
       setState({ submitted: false, errors });
       return;
     }
-    setState({ submitted: true, errors: {} });
+    setSending(true);
+    setSendError(false);
+    try {
+      const res = await sendEstimate({ data: { name, phone, zip, scope, timeline } });
+      if (res.ok) setState({ submitted: true, errors: {} });
+      else setSendError(true);
+    } catch {
+      setSendError(true);
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -446,8 +458,15 @@ function QuoteForm() {
             options={t.quote.timelineOptions}
             error={state.errors.timeline}
           />
-          <button type="submit" className="btn-brass w-full mt-1">
-            {t.quote.submit}
+          {sendError && (
+            <p role="alert" className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-xs text-destructive">
+              {lang === "es"
+                ? "No pudimos enviar tu solicitud. Inténtalo de nuevo o escríbenos por WhatsApp al +1 (813) 415-6599."
+                : "We couldn't send your request. Please try again or message us on WhatsApp at +1 (813) 415-6599."}
+            </p>
+          )}
+          <button type="submit" disabled={sending} className="btn-brass w-full mt-1 disabled:opacity-60">
+            {sending ? (lang === "es" ? "Enviando…" : "Sending…") : t.quote.submit}
           </button>
           <p className="text-[11px] text-muted-foreground text-center">
             {t.quote.privacy}

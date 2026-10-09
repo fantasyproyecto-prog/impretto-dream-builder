@@ -386,7 +386,10 @@ function QuoteForm() {
     try {
       const res = await sendEstimate({ data: { name, phone, zip, scope, timeline } });
       if (res.ok) setState({ submitted: true, errors: {} });
-      else setSendError(true);
+      else {
+        console.warn("[estimate] send failed:", res.reason);
+        setSendError(true);
+      }
     } catch {
       setSendError(true);
     } finally {

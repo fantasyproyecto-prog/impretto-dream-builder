@@ -9,3 +9,4 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 - Vercel builds use the nitro "vercel" preset (set in vite.config.ts when VERCEL env is present) — otherwise server functions are missing on Vercel and the site deploys as static files only.
+- Estimate notification HTML lives in a pure renderer separate from the sending function, with centralized email palette values and inline table styling for email-client compatibility.

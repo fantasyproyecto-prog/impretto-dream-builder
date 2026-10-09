@@ -8,3 +8,4 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+- Vercel builds use the nitro "vercel" preset (set in vite.config.ts when VERCEL env is present) — otherwise server functions are missing on Vercel and the site deploys as static files only.

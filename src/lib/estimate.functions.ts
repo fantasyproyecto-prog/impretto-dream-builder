@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { renderEstimateEmail } from "./estimate-email";
 
 const schema = z.object({
   name: z.string().trim().min(2).max(100),
@@ -8,9 +9,6 @@ const schema = z.object({
   scope: z.string().trim().min(1).max(100),
   timeline: z.string().trim().min(1).max(100),
 });
-
-const esc = (s: string) =>
-  s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 
 const DEFAULT_FROM = "Impretto Home <onboarding@resend.dev>";
 
@@ -32,16 +30,6 @@ export const sendEstimate = createServerFn({ method: "POST" })
       return { ok: false as const, reason: "Email service is not configured (missing RESEND_API_KEY)." };
     }
     const from = resolveFrom(process.env["RESEND_FROM"]);
-    const rows = [
-      ["Name", data.name],
-      ["Phone", data.phone],
-      ["ZIP", data.zip],
-      ["Scope", data.scope],
-      ["Timeline", data.timeline],
-    ]
-      .map(([k, v]) => `<tr><td style="padding:6px 12px;color:#555">${k}</td><td style="padding:6px 12px"><b>${esc(v)}</b></td></tr>`)
-      .join("");
-
     try {
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -50,7 +38,7 @@ export const sendEstimate = createServerFn({ method: "POST" })
           from,
           to: ["Impretto.llc@gmail.com"],
           subject: `New Free Estimate Request — ${data.name} (${data.zip})`,
-          html: `<h2>New Free Estimate Request</h2><table>${rows}</table>`,
+          html: renderEstimateEmail(data),
         }),
       });
       const text = await res.text();

@@ -592,9 +592,9 @@ function TermsPage() {
               Terms and Conditions
             </h1>
             <p className="mt-5 text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              Impretto Home Solution
-              <span className="mx-2 text-border">·</span>
-              <span className="text-foreground/80">
+              <span className="block md:inline">Impretto Home Solution</span>
+              <span className="mx-2 hidden md:inline text-border">·</span>
+              <span className="block md:inline text-foreground/80">
                 Operated by Impretto LLC
               </span>
             </p>
@@ -702,7 +702,7 @@ function TermsPage() {
 function TermsHeader() {
   return (
     <header
-      className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md"
+      className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md"
       style={{
         paddingTop: "env(safe-area-inset-top)",
         paddingLeft: "env(safe-area-inset-left)",

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { sendEstimate } from "@/lib/estimate.functions";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
@@ -1030,9 +1030,9 @@ function Footer() {
           <a href="#" className="hover:text-accent transition-colors">
             {t.footer.privacy}
           </a>
-          <a href="#" className="hover:text-accent transition-colors">
+          <Link to="/terms" className="hover:text-accent transition-colors">
             {t.footer.terms}
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

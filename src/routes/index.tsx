@@ -992,10 +992,10 @@ function Footer() {
               </a>{" "}
               ·{" "}
               <a
-                href="mailto:hello@imprettohome.com"
+                href="mailto:Impretto.llc@gmail.com"
                 className="hover:text-accent transition-colors"
               >
-                hello@imprettohome.com
+                Impretto.llc@gmail.com
               </a>
             </p>
           </div>

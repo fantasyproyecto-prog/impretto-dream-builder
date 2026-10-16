@@ -816,11 +816,11 @@ function ContactCard() {
           </dt>
           <dd className="mt-1.5">
             <a
-              href="mailto:hello@imprettohome.com"
+              href="mailto:Impretto.llc@gmail.com"
               className="inline-flex items-center gap-2 text-foreground transition-colors hover:text-accent"
             >
               <Mail className="h-4 w-4 text-accent" aria-hidden />
-              hello@imprettohome.com
+              Impretto.llc@gmail.com
             </a>
           </dd>
         </div>

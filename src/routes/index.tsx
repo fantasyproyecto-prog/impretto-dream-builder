@@ -1027,9 +1027,9 @@ function Footer() {
       <div className="container-lux mt-16 pt-6 border-t border-primary-foreground/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-primary-foreground/60">
         <p>© {new Date().getFullYear()} Impretto Home. {t.footer.rights}</p>
         <div className="flex gap-6">
-          <a href="#" className="hover:text-accent transition-colors">
+          <Link to="/privacy" className="hover:text-accent transition-colors">
             {t.footer.privacy}
-          </a>
+          </Link>
           <Link to="/terms" className="hover:text-accent transition-colors">
             {t.footer.terms}
           </Link>

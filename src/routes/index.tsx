@@ -444,6 +444,7 @@ function QuoteForm() {
     const zip = String(fd.get("zip") ?? "").trim();
     const scope = String(fd.get("scope") ?? "").trim();
     const timeline = String(fd.get("timeline") ?? "").trim();
+    const website = String(fd.get("website") ?? "");
 
     const errors: QuoteErrors = {};
     if (name.length < 2) errors.name = t.quote.errName;
@@ -459,7 +460,7 @@ function QuoteForm() {
     setSending(true);
     setSendError(false);
     try {
-      const res = await sendEstimate({ data: { name, phone, zip, scope, timeline } });
+      const res = await sendEstimate({ data: { name, phone, zip, scope, timeline, website } });
       if (res.ok) setState({ submitted: true, errors: {} });
       else {
         console.warn("[estimate] send failed:", res.reason);
@@ -480,6 +481,30 @@ function QuoteForm() {
       className="relative lg:absolute lg:-bottom-10 lg:-left-10 lg:right-6 mt-6 lg:mt-0 bg-card text-card-foreground rounded-2xl p-6 sm:p-7 shadow-[var(--shadow-elegant)] border border-border"
       aria-label={t.quote.ariaLabel}
     >
+      {/* Honeypot: off-screen field only bots reach. */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: 0,
+          left: "-9999px",
+          width: 1,
+          height: 1,
+          overflow: "hidden",
+          opacity: 0,
+          pointerEvents: "none",
+        }}
+      >
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          defaultValue=""
+        />
+      </div>
       <div className="flex items-center gap-2">
         <Sparkles className="h-4 w-4 text-accent" strokeWidth={1.5} aria-hidden />
         <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">

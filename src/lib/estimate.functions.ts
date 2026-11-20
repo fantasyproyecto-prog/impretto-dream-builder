@@ -3,11 +3,22 @@ import { z } from "zod";
 import { renderEstimateEmail } from "./estimate-email";
 
 const schema = z.object({
-  name: z.string().trim().min(2).max(100),
+  name: z
+    .string()
+    .trim()
+    .min(2)
+    .max(100)
+    .regex(/^[^\r\n]+$/, "Invalid characters"),
   phone: z.string().trim().regex(/^[+()\d\s\-.]{10,25}$/),
-  zip: z.string().trim().regex(/^\d{5}$/),
+  zip: z
+    .string()
+    .trim()
+    .regex(/^\d{5}$/)
+    .regex(/^[^\r\n]+$/, "Invalid characters"),
   scope: z.string().trim().min(1).max(100),
   timeline: z.string().trim().min(1).max(100),
+  // Honeypot: invisible to real users, bots fill it in.
+  website: z.string().max(500).optional(),
 });
 
 const DEFAULT_FROM = "Impretto Home <onboarding@resend.dev>";
@@ -24,6 +35,10 @@ export function resolveFrom(raw: string | undefined): string {
 export const sendEstimate = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => schema.parse(data))
   .handler(async ({ data }) => {
+    if (data.website?.trim()) {
+      console.log("[estimate] honeypot filled — request discarded without sending");
+      return { ok: true as const };
+    }
     const apiKey = process.env["RESEND_API_KEY"]?.trim();
     if (!apiKey) {
       console.error("[estimate] RESEND_API_KEY is not configured");

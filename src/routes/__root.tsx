@@ -97,8 +97,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Premium bathroom remodeling in Wesley Chapel, Tampa, New Tampa & Lutz, Florida. Thoughtful design, quality craftsmanship, and a stress-free experience." },
       { property: "og:description", content: "Premium bathroom remodeling in Wesley Chapel, Tampa, New Tampa & Lutz, Florida. Thoughtful design, quality craftsmanship, and a stress-free experience." },
       { name: "twitter:description", content: "Premium bathroom remodeling in Wesley Chapel, Tampa, New Tampa & Lutz, Florida. Thoughtful design, quality craftsmanship, and a stress-free experience." },
-      { property: "og:image", content: "https://impretto-dream-builder.lovable.app/images/p63.jpeg" },
-      { name: "twitter:image", content: "https://impretto-dream-builder.lovable.app/images/p63.jpeg" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -108,7 +106,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap",
       },
-      { rel: "icon", type: "image/png", href: "/favicon.png" },
+      { rel: "icon", type: "image/png", href: "/favicon.png?v=official-blue" },
     ],
     scripts: [
       {

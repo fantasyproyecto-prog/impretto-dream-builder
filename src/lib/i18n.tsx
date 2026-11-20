@@ -211,7 +211,7 @@ const EN = {
     claim: "Get Your Free Estimate",
   },
   footer: {
-    tagline: "Impretto Home. Premium bathroom remodeling serving Wesley Chapel & Tampa Bay, Florida.",
+    tagline: "Impretto Home. Residential & commercial painting in Wesley Chapel & Tampa Bay, Florida.",
     navigate: "Navigate",
     areas: "Areas We Serve",
     rights: "All rights reserved.",
@@ -219,6 +219,10 @@ const EN = {
     terms: "Terms",
   },
   painting: {
+    residential: "Residential & Commercial",
+    residentialBody: "Homes, condominiums, and commercial exteriors.",
+    imageNote: "Illustrative residential and commercial views.",
+    residentialAlts: ["Condominium exterior with blue balcony railings", "Team working on a multi-story exterior", "Residential exterior with white trim and a blue front door", "Two-story residential exterior and garage"],
     eyebrow: "Painting Services & Recent Work",
     title: "Painting built for Florida's climate",
     lede: "From weathered, stained walls to a clean, protected finish — real projects completed by the Impretto Home Team.",
@@ -248,7 +252,8 @@ const EN = {
   remodel: {
     eyebrow: "Additional Home Improvement Services",
     title: "Specialized Remodeling Services",
-    lede: "Beyond painting, the Impretto Home Team delivers premium bathroom remodeling across Wesley Chapel & Tampa Bay.",
+    lede: "A portfolio of bathroom spaces, materials, and remodeling details across Wesley Chapel & Tampa Bay.",
+    licensing: "Regulated remodeling and construction work is coordinated through appropriately licensed partner contractors in Florida.",
   },
   langToggle: {
     aria: "Language",
@@ -464,7 +469,7 @@ const ES: Dict = {
     claim: "Solicita Tu Estimado Gratis",
   },
   footer: {
-    tagline: "Impretto Home. Remodelación premium de baños en Wesley Chapel y Tampa Bay, Florida.",
+    tagline: "Impretto Home. Pintura residencial y comercial en Wesley Chapel y Tampa Bay, Florida.",
     navigate: "Navegar",
     areas: "Áreas de Servicio",
     rights: "Todos los derechos reservados.",
@@ -472,6 +477,10 @@ const ES: Dict = {
     terms: "Términos",
   },
   painting: {
+    residential: "Residencial y Comercial",
+    residentialBody: "Casas, condominios y exteriores comerciales.",
+    imageNote: "Vistas ilustrativas de propiedades residenciales y comerciales.",
+    residentialAlts: ["Exterior de condominio con barandales azules", "Equipo trabajando en un exterior de varios pisos", "Exterior residencial con molduras blancas y puerta azul", "Exterior residencial de dos pisos con garaje"],
     eyebrow: "Servicios de Pintura y Trabajos Recientes",
     title: "Pintura hecha para el clima de Florida",
     lede: "De paredes desgastadas y manchadas a un acabado limpio y protegido — proyectos reales realizados por el equipo de Impretto Home.",
@@ -501,7 +510,8 @@ const ES: Dict = {
   remodel: {
     eyebrow: "Servicios Adicionales para el Hogar",
     title: "Servicios Especializados de Remodelación",
-    lede: "Además de pintura, el equipo de Impretto Home ofrece remodelación premium de baños en Wesley Chapel y Tampa Bay.",
+    lede: "Un portafolio de baños, materiales y detalles de remodelación en Wesley Chapel y Tampa Bay.",
+    licensing: "Los trabajos de remodelación regulados se coordinan a través de contratistas asociados debidamente licenciados en Florida.",
   },
   langToggle: {
     aria: "Idioma",

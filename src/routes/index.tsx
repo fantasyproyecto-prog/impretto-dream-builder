@@ -1,3 +1,8 @@
+import { BrandLogo, brandAssetUrl } from "@/components/brand-logo";
+import residentialFinish from "@/assets/painting/residential-finish.jpg.asset.json";
+import residentialExterior from "@/assets/painting/residential-exterior.jpg.asset.json";
+import condominiumExterior from "@/assets/painting/condominium-exterior.jpg.asset.json";
+import exteriorTeam from "@/assets/painting/exterior-team.jpg.asset.json";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { sendEstimate } from "@/lib/estimate.functions";
 import { useEffect, useRef, useState, type FormEvent } from "react";
@@ -29,7 +34,8 @@ const p26 = { url: "/images/p26.jpeg" };
 const p33 = { url: "/images/p33.jpeg" };
 
 const heroBathroom = p63.url;
-const heroPainting = "/images/paint-8.jpeg";
+const heroPainting = brandAssetUrl(residentialFinish.url);
+const RESIDENTIAL = [condominiumExterior, exteriorTeam, residentialFinish, residentialExterior].map((asset) => brandAssetUrl(asset.url));
 const PAINT = [1, 2, 3, 4, 5, 6, 7, 8].map((n) => `/images/paint-${n}.jpeg`);
 const project1 = p60.url;
 const project2 = p54.url;
@@ -64,6 +70,8 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: heroPainting },
+      { name: "twitter:image", content: heroPainting },
       {
         name: "keywords",
         content:
@@ -114,16 +122,16 @@ function LandingPage() {
         <main>
           <Hero />
           <PaintingSection />
-          <RemodelDivider />
           <TrustStrip />
+          <Standards />
+          <RemodelDivider />
           <WhyUs />
           <Services />
           <Portfolio />
           <ProjectsCarousel />
           <CinematicScrub />
           <Process />
-          <Standards />
-          <FinalCTA />
+          <RemodelNote />
         </main>
         <Footer />
         <TranslatedMobileCtaBar />
@@ -163,6 +171,14 @@ function PaintingSection() {
           })}
         </div>
 
+        <div className="mt-16">
+          <h3 className="text-2xl">{p.residential}</h3>
+          <p className="mt-2 text-muted-foreground">{p.residentialBody}</p>
+          <div className="mt-5 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {RESIDENTIAL.map((src, i) => <img key={src} src={src} alt={p.residentialAlts[i] ?? ""} width={768} height={768} loading="lazy" className="aspect-square w-full rounded-lg object-cover" />)}
+          </div>
+          <p className="mt-3 text-xs text-muted-foreground">{p.imageNote}</p>
+        </div>
         <div className="mt-16 space-y-12">
           {groups.map((g, gi) => (
             <div key={g.label}>
@@ -286,7 +302,7 @@ function Header() {
   const [open, setOpen] = useState(false);
 
   const NAV = [
-    { href: "#services", label: t.nav.services },
+    { href: "#painting", label: t.nav.services },
     { href: "#portfolio", label: t.nav.portfolio },
     { href: "#why-us", label: t.nav.whyUs },
     { href: "#standards", label: t.nav.standards },
@@ -304,8 +320,8 @@ function Header() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-background/85 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
+          ? "bg-card border-b border-border shadow-[var(--shadow-soft)]"
+          : "bg-card border-b border-border"
       }`}
       style={{
         paddingTop: "env(safe-area-inset-top)",
@@ -313,17 +329,12 @@ function Header() {
         paddingRight: "env(safe-area-inset-right)",
       }}
     >
-      <div className="container-lux flex items-center justify-between py-4 md:py-5">
+      <div className="container-lux flex items-center justify-between gap-4 py-2">
         <a href="#top" className="flex items-center gap-2 group" aria-label={t.nav.homeAria}>
-          <span className="grid h-9 w-9 place-items-center rounded-sm bg-primary text-primary-foreground font-display text-lg">
-            i
-          </span>
-          <span className="font-display text-xl tracking-tight">
-            Impretto <span className="text-accent">Home</span>
-          </span>
+          <BrandLogo />
         </a>
 
-        <nav className="hidden md:flex items-center gap-8" aria-label={t.nav.primary}>
+        <nav className="hidden xl:flex items-center gap-5" aria-label={t.nav.primary}>
           {NAV.map((n) => (
             <a
               key={n.href}
@@ -335,7 +346,7 @@ function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden xl:flex items-center gap-3">
           <LangToggle />
           <a href={PHONE_HREF} target="_blank" rel="noopener noreferrer" className="btn-outline-ink text-sm">
             <Phone className="h-4 w-4" aria-hidden /> {PHONE_DISPLAY}
@@ -345,7 +356,7 @@ function Header() {
           </a>
         </div>
 
-        <div className="md:hidden flex items-center gap-2">
+        <div className="xl:hidden flex items-center gap-2">
           <LangToggle />
           <button
             type="button"
@@ -360,7 +371,7 @@ function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-border bg-background">
+        <div className="xl:hidden border-t border-border bg-card">
           <nav className="container-lux flex flex-col py-4" aria-label={t.nav.mobile}>
             {NAV.map((n) => (
               <a
@@ -391,48 +402,24 @@ function Header() {
 
 function Hero() {
   const { t } = useI18n();
-  const badgeIcons = [Ruler, ClipboardList, ShieldCheck];
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div className="container-lux grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 pt-10 pb-20 lg:pt-16 lg:pb-28">
-        <div className="animate-fade-up">
+    <section id="top" className="painting-hero relative isolate overflow-hidden border-b border-border">
+      <img src={heroPainting} alt={t.painting.residentialAlts[2]} width={768} height={768} fetchPriority="high" className="absolute inset-0 -z-20 h-full w-full object-cover object-center" />
+      <div className="painting-hero-wash absolute inset-0 -z-10" aria-hidden />
+      <div className="container-lux grid gap-10 py-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-16 lg:py-12">
+        <div className="min-w-0 animate-fade-up">
           <span className="eyebrow">{t.hero.eyebrow}</span>
-          <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-balance">
-            {t.hero.h1a}{" "}
-            <em className="not-italic text-accent font-semibold">{t.hero.h1b}</em>
-          </h1>
-          <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-            {t.hero.lede}
-          </p>
-
-          <ul className="mt-8 grid sm:grid-cols-3 gap-4 max-w-xl">
-            {t.hero.badges.map((label, i) => {
-              const Icon = badgeIcons[i];
-              return (
-                <li key={label} className="flex items-center gap-2 text-sm text-foreground/80">
-                  <Icon className="h-5 w-5 text-accent" strokeWidth={1.5} aria-hidden />
-                  {label}
-                </li>
-              );
-            })}
+          <h1 className="mt-5 text-4xl leading-[1.1] text-balance sm:text-5xl">{t.hero.h1a}<span className="mt-3 block text-2xl text-accent sm:text-3xl">{t.hero.h1b}</span></h1>
+          <p className="mt-5 max-w-xl text-lg text-muted-foreground">{t.hero.lede}</p>
+          <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+            {t.hero.badges.map((label) => <li key={label} className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 shrink-0 text-accent" aria-hidden />{label}</li>)}
           </ul>
-        </div>
-
-        <div className="relative">
-          <div className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-elegant)]">
-            <img
-              src={heroPainting}
-              alt={t.hero.heroAlt}
-              width={1600}
-              height={1200}
-              className="h-[380px] sm:h-[560px] w-full object-cover"
-              fetchPriority="high"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent pointer-events-none" />
+          <div className="mt-8 grid grid-cols-2 gap-3">
+            <img src={heroPainting} alt={t.painting.residentialAlts[2]} width={768} height={768} className="aspect-[4/3] w-full rounded-lg object-cover" />
+            <img src="/images/paint-8.jpeg" alt={t.hero.heroAlt} width={1200} height={1600} className="aspect-[4/3] w-full rounded-lg object-cover" />
           </div>
-
-          <QuoteForm />
         </div>
+        <div className="min-w-0 self-start"><QuoteForm /></div>
       </div>
     </section>
   );
@@ -756,14 +743,12 @@ function Services() {
               {t.services.h2}
             </h2>
           </div>
-          <a href="#contact" className="btn-outline-ink self-start md:self-auto">
-            {t.services.discuss}
-          </a>
+
         </div>
 
         <div className="mt-14 grid sm:grid-cols-2 gap-5">
           {t.services.items.map((s, i) => {
-            const featured = i === 0;
+            const featured = false;
             return (
               <article
                 key={s.title}
@@ -797,10 +782,7 @@ function Services() {
                 >
                   {s.body}
                 </p>
-                <div className="mt-8 flex items-center gap-2 text-sm text-accent">
-                  <span>{t.services.explore}</span>
-                  <span aria-hidden className="transition-transform group-hover:translate-x-1">→</span>
-                </div>
+
               </article>
             );
           })}
@@ -982,7 +964,7 @@ function Process() {
             {t.process.eyebrow}
           </span>
           <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl leading-[1.1] text-balance">
-            {t.process.h2a} <em className="not-italic text-accent">{t.process.h2b}</em>
+            {t.process.h2a} <em className="not-italic text-on-dark-accent">{t.process.h2b}</em>
           </h2>
         </div>
 
@@ -992,7 +974,7 @@ function Process() {
             return (
               <li key={s.title} className="relative">
                 <div className="flex items-center gap-4">
-                  <span className="font-display text-5xl text-accent leading-none">
+                  <span className="font-display text-5xl text-on-dark-accent leading-none">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <Icon className="h-6 w-6 text-primary-foreground/70" strokeWidth={1.5} aria-hidden />
@@ -1012,27 +994,9 @@ function Process() {
 
 /* ---------------- Final CTA ---------------- */
 
-function FinalCTA() {
+function RemodelNote() {
   const { t } = useI18n();
-  return (
-    <section className="py-20 lg:py-28 bg-secondary/60 border-y border-border">
-      <div className="container-lux text-center max-w-3xl">
-        <span className="eyebrow justify-center">{t.finalCta.eyebrow}</span>
-        <h2 className="mt-6 text-4xl sm:text-5xl lg:text-6xl leading-[1.05] text-balance">
-          {t.finalCta.h2a} <em className="not-italic text-accent">{t.finalCta.h2b}</em>
-        </h2>
-        <p className="mt-6 text-lg text-muted-foreground">{t.finalCta.lede}</p>
-        <div className="mt-10 flex flex-wrap gap-4 justify-center">
-          <a href="#contact" className="btn-brass">
-            {t.finalCta.claim}
-          </a>
-          <a href={PHONE_HREF} target="_blank" rel="noopener noreferrer" className="btn-outline-ink">
-            <Phone className="h-4 w-4" /> {PHONE_DISPLAY}
-          </a>
-        </div>
-      </div>
-    </section>
-  );
+  return <section className="border-y border-border bg-secondary py-8"><div className="container-lux"><p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">{t.remodel.licensing}</p></div></section>;
 }
 
 /* ---------------- Footer ---------------- */
@@ -1040,7 +1004,7 @@ function FinalCTA() {
 function Footer() {
   const { t } = useI18n();
   const NAV = [
-    { href: "#services", label: t.nav.services },
+    { href: "#painting", label: t.nav.services },
     { href: "#portfolio", label: t.nav.portfolio },
     { href: "#why-us", label: t.nav.whyUs },
     { href: "#standards", label: t.nav.standards },
@@ -1064,24 +1028,19 @@ function Footer() {
     <footer className="bg-primary text-primary-foreground pt-20 pb-8">
       <div className="container-lux grid gap-12 lg:grid-cols-[1.2fr_1fr_1.2fr]">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="grid h-9 w-9 place-items-center rounded-sm bg-accent text-primary-foreground font-display text-lg">
-              i
-            </span>
-            <span className="font-display text-xl">Impretto Home</span>
-          </div>
+          <a href="#top" aria-label={t.nav.homeAria} className="inline-flex rounded-lg bg-card px-5 py-3"><BrandLogo /></a>
           <p className="mt-5 text-primary-foreground/70 max-w-sm leading-relaxed">
             {t.footer.tagline}
           </p>
           <div className="mt-6 space-y-1.5 text-sm text-primary-foreground/80">
             <p>
-              <a href={PHONE_HREF} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+              <a href={PHONE_HREF} target="_blank" rel="noopener noreferrer" className="hover:text-on-dark-accent transition-colors">
                 {PHONE_DISPLAY}
               </a>{" "}
               ·{" "}
               <a
                 href="mailto:Impretto.llc@gmail.com"
-                className="hover:text-accent transition-colors"
+                className="hover:text-on-dark-accent transition-colors"
               >
                 Impretto.llc@gmail.com
               </a>
@@ -1090,11 +1049,11 @@ function Footer() {
         </div>
 
         <div>
-          <h3 className="font-display text-lg text-accent">{t.footer.navigate}</h3>
+          <h3 className="font-display text-lg text-on-dark-accent">{t.footer.navigate}</h3>
           <ul className="mt-5 space-y-3 text-sm text-primary-foreground/80">
             {NAV.map((n) => (
               <li key={n.href}>
-                <a href={n.href} className="hover:text-accent transition-colors">
+                <a href={n.href} className="hover:text-on-dark-accent transition-colors">
                   {n.label}
                 </a>
               </li>
@@ -1103,7 +1062,7 @@ function Footer() {
         </div>
 
         <div>
-          <h3 className="font-display text-lg text-accent">{t.footer.areas}</h3>
+          <h3 className="font-display text-lg text-on-dark-accent">{t.footer.areas}</h3>
           <ul className="mt-5 grid grid-cols-2 gap-y-2 text-sm text-primary-foreground/80">
             {areas.map((a) => (
               <li key={a}>{a}</li>
@@ -1115,10 +1074,10 @@ function Footer() {
       <div className="container-lux mt-16 pt-6 border-t border-primary-foreground/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-primary-foreground/60">
         <p>© {new Date().getFullYear()} Impretto Home. {t.footer.rights}</p>
         <div className="flex gap-6">
-          <Link to="/privacy" className="hover:text-accent transition-colors">
+          <Link to="/privacy" className="hover:text-on-dark-accent transition-colors">
             {t.footer.privacy}
           </Link>
-          <Link to="/terms" className="hover:text-accent transition-colors">
+          <Link to="/terms" className="hover:text-on-dark-accent transition-colors">
             {t.footer.terms}
           </Link>
         </div>

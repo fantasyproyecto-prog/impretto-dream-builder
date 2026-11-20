@@ -44,6 +44,8 @@
   --color-clay: var(--clay);
   --color-ink: var(--ink);
   --color-cream: var(--cream);
+  --color-brand-hover: var(--brand-hover);
+  --color-on-dark-accent: var(--on-dark-accent);
 
   --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Plus Jakarta Sans", "Manrope", ui-sans-serif, system-ui, sans-serif;
@@ -53,14 +55,17 @@
 }
 
 :root {
-  --radius: 0.75rem;
+  --radius: 0.5rem;
 
-  /* Premium minimalist — deep black + luxurious green */
-  --cream: #F7F8F7;              /* soft white background */
-  --ink: #0B0C0B;                /* deep black */
-  --brass: #1F6F4A;              /* luxurious emerald green accent */
-  --brass-soft: #E3EFE8;         /* soft green tint */
-  --clay: #7E8A83;               /* muted slate green */
+  /* Official blue / charcoal brand. Legacy aliases keep all pages themed. */
+  --cream: #FFFFFF;
+  --ink: #111820;
+  --brass: #0047AB;
+  --brass-soft: #F4F7FA;
+  --clay: #64748B;
+  --brand-hover: #003380;
+  --on-dark-accent: #B9D5FF;
+  --hero-wash: linear-gradient(90deg, color-mix(in oklab, var(--cream) 98%, transparent) 0%, color-mix(in oklab, var(--cream) 92%, transparent) 40%, color-mix(in oklab, var(--cream) 12%, transparent) 100%);
 
   --background: var(--cream);
   --foreground: var(--ink);
@@ -72,16 +77,16 @@
 
   --primary: var(--ink);
   --primary-foreground: #FFFFFF;
-  --secondary: #FFFFFF;
+  --secondary: #F4F7FA;
   --secondary-foreground: var(--ink);
-  --muted: #EDEFEE;
-  --muted-foreground: #676E6A;
-  --accent: var(--brass);
+  --muted: #F4F7FA;
+  --muted-foreground: #64748B;
+  --accent: #0052CC;
   --accent-foreground: #FFFFFF;
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: #E9ECEA;
-  --input: #DFE3E1;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
   --ring: var(--brass);
 }
 
@@ -115,7 +120,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     font-weight: 600;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
     line-height: 1.15;
   }
 
@@ -175,14 +180,14 @@
   gap: 0.5rem;
   padding: 1rem 1.75rem;
   background: var(--brass);
-  color: #FFFFFF;
+  color: var(--accent-foreground);
   font-weight: 500;
   letter-spacing: 0.005em;
   border-radius: calc(var(--radius) + 2px);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   box-shadow: var(--shadow-soft);
   &:hover {
-    background: color-mix(in oklab, var(--brass) 88%, #000);
+    background: var(--brand-hover);
     transform: translateY(-1px);
     box-shadow: var(--shadow-elegant);
   }
@@ -241,6 +246,24 @@
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* Preserve the estimate form itself while adapting its surrounding layout. */
+.painting-hero #contact {
+  position: relative;
+  inset: auto;
+  margin: 0;
+  border-radius: var(--radius);
+}
+.painting-hero-wash { background: var(--hero-wash); }
+.brand-logo { display: block; width: 126px; height: 101px; object-fit: contain; }
+header .brand-logo { width: 100px; height: 80px; }
+@media (min-width: 1280px) {
+  header .brand-logo { width: 112px; height: 90px; }
+}
+@media (max-width: 767px) {
+  .painting-hero-wash { background: color-mix(in oklab, var(--cream) 94%, transparent); }
+  header .brand-logo { width: 84px; height: 68px; }
 }
 
 

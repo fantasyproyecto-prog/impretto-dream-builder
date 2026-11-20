@@ -16,7 +16,7 @@ export function MobileCtaBar({ ctaLabel = "Get Free Estimate" }: { ctaLabel?: st
         style={{ height: "calc(72px + env(safe-area-inset-bottom))" }}
       />
       <div
-        className="md:hidden fixed inset-x-0 bottom-0 z-40 border-t border-white/40 bg-white/70 backdrop-blur-xl"
+        className="md:hidden fixed inset-x-0 bottom-0 z-40 border-t border-border bg-card/95 backdrop-blur-xl"
         style={{
           paddingBottom: "calc(env(safe-area-inset-bottom) + 0.5rem)",
           paddingTop: "0.5rem",
@@ -31,7 +31,7 @@ export function MobileCtaBar({ ctaLabel = "Get Free Estimate" }: { ctaLabel?: st
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat with Impretto Home on WhatsApp"
-            className="inline-flex h-12 min-w-[48px] items-center justify-center rounded-xl border border-ink/15 bg-white text-ink shadow-sm active:scale-[0.98] transition"
+            className="inline-flex h-12 min-w-[48px] items-center justify-center rounded-lg border border-border bg-card text-foreground shadow-sm active:scale-[0.98] transition"
           >
             <Phone className="h-5 w-5" aria-hidden />
           </a>

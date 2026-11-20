@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { BrandLogo } from "@/components/brand-logo";
 import type { ReactNode } from "react";
 import { ArrowLeft, Mail, Phone, MapPin, Globe } from "lucide-react";
 
@@ -702,25 +703,20 @@ function TermsPage() {
 function TermsHeader() {
   return (
     <header
-      className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md"
+      className="sticky top-0 z-50 border-b border-border bg-card"
       style={{
         paddingTop: "env(safe-area-inset-top)",
         paddingLeft: "env(safe-area-inset-left)",
         paddingRight: "env(safe-area-inset-right)",
       }}
     >
-      <div className="container-lux flex items-center justify-between gap-4 py-4 md:py-5">
+      <div className="container-lux flex items-center justify-between gap-4 py-2">
         <Link
           to="/"
           className="flex items-center gap-2"
           aria-label="Impretto Home home"
         >
-          <span className="grid h-9 w-9 place-items-center rounded-sm bg-primary text-primary-foreground font-display text-lg">
-            i
-          </span>
-          <span className="font-display text-xl tracking-tight">
-            Impretto <span className="text-accent">Home</span>
-          </span>
+          <BrandLogo />
         </Link>
 
         <div className="flex items-center gap-3">

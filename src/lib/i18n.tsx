@@ -221,7 +221,7 @@ const EN = {
   painting: {
     eyebrow: "Painting Services & Recent Work",
     title: "Painting built for Florida's climate",
-    lede: "From weathered, mildew-stained walls to a clean, protected finish — real projects completed by the Impretto Home Team.",
+    lede: "From weathered, stained walls to a clean, protected finish — real projects completed by the Impretto Home Team.",
     services: [
       { title: "Exterior & Interior Painting", body: "Weather-resistant elastomeric and acrylic coatings for exteriors, and smooth, durable finishes for every interior room." },
       { title: "Pressure Washing & Surface Prep", body: "Pressure washing, exterior surface cleaning, minor caulking, and priming — the preparation that makes paint last." },

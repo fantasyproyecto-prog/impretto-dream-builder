@@ -3,6 +3,9 @@ import { sendEstimate } from "@/lib/estimate.functions";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import {
   BadgeCheck,
+  Building2,
+  Droplets,
+  Paintbrush,
   CheckCircle2,
   ClipboardList,
   Hammer,
@@ -26,6 +29,8 @@ const p26 = { url: "/images/p26.jpeg" };
 const p33 = { url: "/images/p33.jpeg" };
 
 const heroBathroom = p63.url;
+const heroPainting = "/images/paint-8.jpeg";
+const PAINT = [1, 2, 3, 4, 5, 6, 7, 8].map((n) => `/images/paint-${n}.jpeg`);
 const project1 = p60.url;
 const project2 = p54.url;
 const project3 = p49.url;
@@ -41,28 +46,28 @@ export const Route = createFileRoute("/")({
     meta: [
       {
         title:
-          "Bathroom Remodeling Wesley Chapel & Tampa | Impretto Home",
+          "Painting Contractors Wesley Chapel & Tampa | Impretto Home",
       },
       {
         name: "description",
         content:
-          "Premium bathroom remodeling in Wesley Chapel, Tampa, New Tampa & Lutz. Tub-to-shower conversions, walk-in showers, and full remodels managed start to finish.",
+          "Residential & commercial interior and exterior painting, pressure washing, and surface prep in Wesley Chapel, Tampa & Tampa Bay. Plus premium bathroom remodeling.",
       },
       {
         property: "og:title",
-        content: "Bathroom Remodeling Wesley Chapel & Tampa | Impretto Home",
+        content: "Painting Contractors Wesley Chapel & Tampa | Impretto Home",
       },
       {
         property: "og:description",
         content:
-          "Thoughtful design, quality craftsmanship, and a stress-free remodeling experience across Tampa Bay, Florida.",
+          "Interior & exterior painting, pressure washing, and surface preparation built for Florida's climate across Tampa Bay.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "keywords",
         content:
-          "Bathroom Remodeling Wesley Chapel, Bathroom Remodeling Tampa, Bathroom Remodeling New Tampa, Bathroom Remodeling Lutz, Tub-to-Shower Conversion Wesley Chapel, Tampa Bay Bathroom Remodeling",
+          "Painting Contractor Wesley Chapel, Exterior Painting Tampa, Interior Painting Tampa Bay, Pressure Washing Wesley Chapel, Commercial Painting Tampa, Bathroom Remodeling Wesley Chapel, Bathroom Remodeling Tampa, Bathroom Remodeling New Tampa, Bathroom Remodeling Lutz, Tub-to-Shower Conversion Wesley Chapel, Tampa Bay Bathroom Remodeling",
       },
     ],
     scripts: [
@@ -73,7 +78,7 @@ export const Route = createFileRoute("/")({
           "@type": "LocalBusiness",
           name: "Impretto Home",
           description:
-            "Premium bathroom remodeling serving Wesley Chapel & Tampa Bay, Florida.",
+            "Residential & commercial painting and premium bathroom remodeling serving Wesley Chapel & Tampa Bay, Florida.",
           telephone: "+1-813-415-6599",
           priceRange: "$$$",
           address: {
@@ -108,6 +113,8 @@ function LandingPage() {
         <Header />
         <main>
           <Hero />
+          <PaintingSection />
+          <RemodelDivider />
           <TrustStrip />
           <WhyUs />
           <Services />
@@ -122,6 +129,87 @@ function LandingPage() {
         <TranslatedMobileCtaBar />
       </div>
     </I18nProvider>
+  );
+}
+
+/* ---------------- Painting (primary) ---------------- */
+
+function PaintingSection() {
+  const { t } = useI18n();
+  const p = t.painting;
+  const icons = [Paintbrush, Droplets, Building2];
+  const groups = [
+    { label: p.before, body: p.beforeBody, idx: [0, 1] },
+    { label: p.progress, body: p.progressBody, idx: [2, 3, 4, 5, 6] },
+    { label: p.after, body: p.afterBody, idx: [7] },
+  ];
+  return (
+    <section id="painting" className="py-20 lg:py-28 bg-card">
+      <div className="container-lux">
+        <span className="eyebrow">{p.eyebrow}</span>
+        <h2 className="mt-5 max-w-3xl text-3xl sm:text-4xl lg:text-5xl text-balance">{p.title}</h2>
+        <p className="mt-5 max-w-2xl text-lg text-muted-foreground">{p.lede}</p>
+
+        <div className="mt-12 grid gap-5 md:grid-cols-3">
+          {p.services.map((s, i) => {
+            const Icon = icons[i] ?? Paintbrush;
+            return (
+              <article key={s.title} className="rounded-2xl border border-border bg-background p-7 shadow-[var(--shadow-soft)]">
+                <Icon className="h-7 w-7 text-accent" strokeWidth={1.5} aria-hidden />
+                <h3 className="mt-5 text-xl">{s.title}</h3>
+                <p className="mt-3 text-muted-foreground leading-relaxed">{s.body}</p>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="mt-16 space-y-12">
+          {groups.map((g, gi) => (
+            <div key={g.label}>
+              <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <span className="font-display text-sm text-accent">0{gi + 1}</span>
+                <h3 className="text-2xl">{g.label}</h3>
+                <span className="text-sm text-muted-foreground">— {g.body}</span>
+              </div>
+              <div
+                className={`mt-5 grid gap-4 ${
+                  g.idx.length === 1 ? "grid-cols-1 sm:grid-cols-2" : g.idx.length === 2 ? "grid-cols-2" : "grid-cols-2 md:grid-cols-3 lg:grid-cols-5"
+                }`}
+              >
+                {g.idx.map((n) => (
+                  <img
+                    key={n}
+                    src={PAINT[n]}
+                    alt={p.alts[n] ?? ""}
+                    loading="lazy"
+                    width={1200}
+                    height={1600}
+                    className="aspect-[3/4] w-full rounded-xl object-cover shadow-[var(--shadow-soft)]"
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-14">
+          <a href="#top" className="btn-brass">{p.cta}</a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function RemodelDivider() {
+  const { t } = useI18n();
+  return (
+    <section id="remodeling" className="pt-20 lg:pt-28 border-t border-border">
+      <div className="container-lux text-center">
+        <span className="eyebrow">{t.remodel.eyebrow}</span>
+        <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl text-balance">{t.remodel.title}</h2>
+        <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">{t.remodel.lede}</p>
+      </div>
+    </section>
   );
 }
 
@@ -333,7 +421,7 @@ function Hero() {
         <div className="relative">
           <div className="relative rounded-2xl overflow-hidden shadow-[var(--shadow-elegant)]">
             <img
-              src={heroBathroom}
+              src={heroPainting}
               alt={t.hero.heroAlt}
               width={1600}
               height={1200}

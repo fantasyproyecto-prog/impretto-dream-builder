@@ -7,3 +7,7 @@
 ## Estimate form anti-abuse hardening
 - [x] Add off-screen honeypot field; discard bot submissions without sending email.
 - [x] Reject carriage return or line feed characters in name and ZIP before building the email subject.
+
+## 60-30-10 palette refinement
+- [x] Add terracotta conversion accent (#E85D2A / #CF4C1D) for primary CTAs only; keep cobalt blue for badges and secondary elements.
+- [x] Verify desktop and mobile presentation; confirm protected email, legal, and pixel code untouched.
